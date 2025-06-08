@@ -1,0 +1,35 @@
+/* lora font */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+/* Playfair Display */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+@font-face {
+  font-family: Lora;
+  src: url("../assets/fonts/Lora-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lora-Bold";
+  src: url("../assets/fonts/Lora-Bold.ttf");
+}
+
+@font-face {
+  font-family: Playfair;
+  src: url("../assets/fonts/PlayfairDisplay-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Playfair-Extra-Bold";
+  src: url("../assets/fonts/PlayfairDisplay-ExtraBold.ttf");
+}
+
+@theme {
+  --font-lora-regular: Lora, "sans-serif";
+  --font-lora-bold: "Lora-Bold", "serif";
+  --font-playfair-bold: Playfair, "sans-serif";
+  --font-playfair-extra-bold: "Playfair-Extra-Bold", "serif";
+}
+
+body {
+  background-color: var(--base-white);
+}
