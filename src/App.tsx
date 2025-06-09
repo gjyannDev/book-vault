@@ -37,15 +37,20 @@ function App() {
     <>
       <NavBar />
       <div className="container mx-auto px-4 sm:px-8 lg:px-14">
-        <div className="flex flex-col justify-center w-full">
-          <div className="">
-            <h1 className="text-5xl font-playfair-bold text-[var(--primary-text)]">
-              Your Gateway to a Smarter Shelf.
-            </h1>
-            <p className="font-lora-regular text-[var(--primary-text)]">
-              One bookstore. Infinite journeys. Build your collection with the
-              best reads around.
-            </p>
+        <div className="flex flex-col gap-11 justify-center w-full py-14">
+          <div className="flex flex-col gap-6">
+            <div className="flex justify-center lg:hidden">
+              <img src={heroImage} alt="hero image" className="w-[356px]" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="text-5xl font-playfair-bold text-[var(--primary-text)]">
+                Your Gateway to a Smarter Shelf.
+              </h1>
+              <p className="font-lora-regular text-[var(--primary-text)]">
+                One bookstore. Infinite journeys. Build your collection with the
+                best reads around.
+              </p>
+            </div>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(handleSubmit)} className="">
                 <FormField
@@ -67,7 +72,7 @@ function App() {
               </form>
             </Form>
           </div>
-          <div>
+          <div className="hidden lg:flex">
             <img src={heroImage} alt="hero image" className="w-[356px]" />
           </div>
         </div>
