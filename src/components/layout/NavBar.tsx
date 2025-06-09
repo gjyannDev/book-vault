@@ -12,7 +12,7 @@ export default function NavBar() {
             </h1>
           </div>
           <div className="nav__middle--content">
-            <ul className="hidden lg:flex md:gap-12">
+            <ul className="hidden lg:flex md:gap-12 text-[var(--base-white)]">
               <li>
                 <Link to="/">Home</Link>
               </li>
@@ -31,15 +31,15 @@ export default function NavBar() {
             <div className="menu__container lg:hidden">
               <Menu color="var(--base-white)" />
             </div>
-            <div className="hidden lg:flex md:gap-6">
+            <div className="hidden lg:flex md:gap-6 text-[var(--base-white)]">
               <Link to="">
-                <Search />
+                <Search color="var(--base-white)" />
               </Link>
               <Link to="">
-                <ShoppingCart />
+                <ShoppingCart color="var(--base-white)" />
               </Link>
               <Link to="">
-                <Heart />
+                <Heart color="var(--base-white)" />
               </Link>
             </div>
           </div>
