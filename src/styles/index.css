@@ -79,6 +79,7 @@
   --color-sidebar-border: var(--sidebar-border);
 
   --color-sidebar-ring: var(--sidebar-ring);
+
 }
 
 :root {
@@ -88,6 +89,8 @@
   --background: oklch(0.963 0.012 97.8);
 
   --foreground: oklch(0.129 0.042 264.695);
+
+  --secondary-background: #4a4947;
 
   --card: oklch(1 0 0);
 

@@ -87,4 +87,8 @@
   --base-black: #4a4947;
 
   /* Design Tokens */
+  --bg-dark: var(--base-black);
+
+  /* text design tokens */
+  --text-white: var(--base-white)
 }
