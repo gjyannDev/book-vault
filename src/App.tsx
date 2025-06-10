@@ -48,7 +48,8 @@ const products = [
   {
     image:
       "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=800&q=80",
-    title: "The Evangelists: Insights from Leaders of the Nation's Most Beloved Brands",
+    title:
+      "The Evangelists: Insights from Leaders of the Nation's Most Beloved Brands",
     price: "₱729.00 PHP",
     description:
       "Deep Work explains how deep focus is essential in an age of distraction, helping you achieve greater productivity and creative breakthroughs.",
@@ -67,10 +68,13 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className="container flex flex-col gap-20 mx-auto px-4 sm:px-8 lg:px-14">
+      <div className="container flex flex-col gap-24 mx-auto px-4 sm:px-8 lg:px-14">
         <HeroSection />
         <QualityCard cardDetails={quality_cards} />
-        <ShopCard bookInfo={products} />
+        <div className="featured__books">
+          <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">Featured Books</h1>
+          <ShopCard bookInfo={products} />
+        </div>
       </div>
     </>
   );

@@ -37,7 +37,7 @@ export default function HeroSection() {
     <div
       className={clsx(
         "flex flex-col gap-11 justify-center w-full py-14",
-        "lg:flex-row lg:py-20",
+        "lg:flex-row lg:py-20"
       )}
     >
       <div className="flex flex-col gap-6">
@@ -48,7 +48,7 @@ export default function HeroSection() {
           <div className="flex flex-col gap-2 lg:gap-4">
             <h1
               className={clsx(
-                "text-5xl font-playfair-bold text-[var(--primary-text)]",
+                "text-5xl font-playfair-bold text-[var(--primary-text)] leading-[1.2]",
                 "md:text-6xl",
                 "lg:text-[4rem]"
               )}
