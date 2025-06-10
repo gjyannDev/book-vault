@@ -93,7 +93,7 @@ export default function HeroSection() {
         <img
           src={heroImage}
           alt="hero image"
-          className="w-[356px] lg:w-[548px]"
+          className="w-[22.25rem] lg:w-[34.25rem] xl:w-[39rem]"
         />
       </div>
     </div>
