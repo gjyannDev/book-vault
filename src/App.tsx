@@ -75,6 +75,10 @@ function App() {
           <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">Featured Books</h1>
           <ShopCard bookInfo={products} variant={"compact"}/>
         </div>
+        <div className="best__books">
+          <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">Bestseller Books</h1>
+          <ShopCard bookInfo={products} variant={"featured"}/>
+        </div>
       </div>
     </>
   );
