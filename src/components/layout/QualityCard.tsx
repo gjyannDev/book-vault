@@ -15,7 +15,7 @@ export default function QualityCard({ cardDetails }: QualityCardProps) {
   return (
     <div
       className={clsx(
-        "flex flex-col gap-6 justify-center items-center py-12",
+        "flex flex-col gap-6 justify-center items-center",
         "md:flex-row"
       )}
     >
