@@ -13,7 +13,12 @@ interface QualityCardProps {
 
 export default function QualityCard({ cardDetails }: QualityCardProps) {
   return (
-    <div className="flex flex-wrap gap-8 justify-center items-center py-14">
+    <div
+      className={clsx(
+        "flex flex-col gap-6 justify-center items-center py-12",
+        "md:flex-row"
+      )}
+    >
       {cardDetails.map((card, index) => {
         const Icon = card.icon;
         return (
@@ -21,16 +26,20 @@ export default function QualityCard({ cardDetails }: QualityCardProps) {
             key={index}
             className={clsx(
               "flex justify-center items-center",
-              "p-4 shadow-md rounded-md bg-[var(--base-white)] w-full h-52",
+              "p-3 shadow-sm rounded-md bg-[var(--base-white)]",
               "outline",
               "outline-1",
-              "outline-[var(--dark-outline)]"
+              "outline-[var(--dark-outline)]",
+              "w-full md:max-w-[260px] h-48 md:h-40",
+              "overflow-hidden"
             )}
           >
-            <CardContent className="flex flex-col gap-2 justify-center items-center">
-              <Icon className="w-20 h-20 text-primary" strokeWidth={1}/>
-              <h3 className="font-playfair-bold text-2xl font-semibold">{card.title}</h3>
-              <p className="font-lora-regular text-sm text-muted-foreground text-center">
+            <CardContent className="flex flex-col items-center justify-center gap-1 text-center px-2">
+              <Icon className="w-20 h-20 md:w-10 md:h-10 text-primary lg:w-13 lg:h-13" strokeWidth={1} />
+              <h3 className="text-2xl font-playfair-bold font-semibold truncate w-full md:text-base">
+                {card.title}
+              </h3>
+              <p className="text-sm font-lora-regular text-muted-foreground break-words leading-snug md:text-xs">
                 {card.description}
               </p>
             </CardContent>
