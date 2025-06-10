@@ -1,4 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Package, Ribbon, Shield, Truck } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import heroImage from "./assets/images/heroSectionImage.png";
@@ -11,6 +12,7 @@ import {
   FormMessage,
 } from "./components/ui/form";
 import { Input } from "./components/ui/input";
+import QualityCard from "./components/layout/QualityCard";
 
 const FormSchema = z.object({
   title: z
@@ -21,6 +23,30 @@ const FormSchema = z.object({
     }),
 });
 
+const quality_cards = [
+  {
+    icon: Truck,
+    title: "Quick Delivery",
+    description: "We deliver your favorite books straight to your doorstep",
+  },
+  {
+    icon: Ribbon,
+    title: "Best Quality",
+    description:
+      "Premium picks with crisp pages, sturdy binding, and stunning covers.",
+  },
+  {
+    icon: Shield,
+    title: "Secure Payment",
+    description: "Your payments are protected by industry-standard encryption.",
+  },
+  {
+    icon: Package,
+    title: "Return Guarantee",
+    description: "100% Money Back Guarantee",
+  },
+];
+
 function App() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -29,6 +55,7 @@ function App() {
     },
   });
 
+  //TODO: Implement the search functionality
   function handleSubmit(data: z.infer<typeof FormSchema>) {
     console.log("data: ", data);
   }
@@ -76,6 +103,7 @@ function App() {
             <img src={heroImage} alt="hero image" className="w-[356px]" />
           </div>
         </div>
+        <QualityCard cardDetails={quality_cards}/>
       </div>
     </>
   );
