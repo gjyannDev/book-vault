@@ -3,6 +3,7 @@ import HeroSection from "./components/layout/HeroSection";
 import NavBar from "./components/layout/NavBar";
 import QualityCard from "./components/layout/QualityCard";
 import ShopCard from "./features/books/components/ShopCard";
+import CallToActionFooter from "./components/layout/CallToActionFooter";
 
 const quality_cards = [
   {
@@ -80,6 +81,7 @@ function App() {
           <ShopCard bookInfo={products} variant={"featured"}/>
         </div>
       </div>
+      <CallToActionFooter />
     </>
   );
 }
