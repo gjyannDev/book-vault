@@ -90,5 +90,12 @@
   --bg-dark: var(--base-black);
 
   /* text design tokens */
-  --text-white: var(--base-white)
+  --text-white: var(--base-white);
+  --primary-text: var(--base-black);
+
+  /* icons colors */
+  --icon-white: var(--base-white);
+
+  /* border and outline */
+  --dark-outline: var(--base-black);
 }
