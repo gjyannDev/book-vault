@@ -8,20 +8,43 @@ export default function Footer() {
     <div className="w-full bg-[var(--base-black)] text-[var(--text-white)]">
       <div
         className={clsx(
-          "flex flex-col gap-8",
-          "container mx-auto px-4",
-          "sm:px-6 lg:px-12 xl:px-16 py-6"
+          "flex flex-col gap-6",
+          "container mx-auto px-4 py-8",
+          "sm:px-6 lg:px-12 xl:px-16",
+          "md:py-10 lg:gap-10 xl:py-12"
         )}
       >
-        <div className="">
+        <div
+          className={clsx(
+            "flex flex-col gap-8",
+            "lg:flex-row lg:gap-28 xl:gap-64"
+          )}
+        >
           <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-1.5">
-              <h1 className="font-playfair-bold text-4xl">BookVault</h1>
-              <p className="font-lora-regular text-sm">
+            <div className={clsx("flex flex-col gap-1.5", "md:gap-2.5")}>
+              <h1
+                className={clsx(
+                  "font-playfair-bold text-4xl",
+                  "md:text-5xl lg:text-6xl"
+                )}
+              >
+                BookVault
+              </h1>
+              <p
+                className={clsx(
+                  "font-lora-regular text-sm",
+                  "md:text-md md:max-w-60 lg:text-base"
+                )}
+              >
                 Great reads. Great prices. Delivered to your door.
               </p>
             </div>
-            <div className="flex items-center gap-5">
+            <div
+              className={clsx(
+                "flex items-center gap-5 cursor-pointer",
+                "lg:gap-7"
+              )}
+            >
               <a
                 href=""
                 target="_blank"
@@ -56,78 +79,88 @@ export default function Footer() {
               </a>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          <h1 className="font-lora-regular text-3xl">Shop</h1>
-          <div className="">
-            <ul className="font-lora-regular flex flex-col gap-2">
-              <li>
-                <Link to="">All books</Link>
-              </li>
-              <li>
-                <Link to="">Bestsellers</Link>
-              </li>
-              <li>
-                <Link to="">Fiction</Link>
-              </li>
-              <li>
-                <Link to="">Non - Fiction</Link>
-              </li>
-            </ul>
+          <div
+            className={clsx(
+              "flex flex-col gap-8",
+              "md:flex-row md:justify-between",
+              "lg:w-full"
+            )}
+          >
+            <div className="flex flex-col gap-4">
+              <h1 className="font-lora-regular text-3xl">Shop</h1>
+              <div className="">
+                <ul className="font-lora-regular flex flex-col gap-2">
+                  <li>
+                    <Link to="">All books</Link>
+                  </li>
+                  <li>
+                    <Link to="">Bestsellers</Link>
+                  </li>
+                  <li>
+                    <Link to="">Fiction</Link>
+                  </li>
+                  <li>
+                    <Link to="">Non - Fiction</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h1 className="font-lora-regular text-3xl">Categories</h1>
+              <div className="">
+                <ul className="font-lora-regular flex flex-col gap-2">
+                  <li>
+                    <Link to="">Fiction</Link>
+                  </li>
+                  <li>
+                    <Link to="">Non - Fiction</Link>
+                  </li>
+                  <li>
+                    <Link to="">Self - Help</Link>
+                  </li>
+                  <li>
+                    <Link to="">Children's Books</Link>
+                  </li>
+                  <li>
+                    <Link to="">Mystery</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <h1 className="font-lora-regular text-3xl">Service</h1>
+              <div className="">
+                <ul className="font-lora-regular flex flex-col gap-2">
+                  <li>
+                    <Link to="">Privacy and Policy</Link>
+                  </li>
+                  <li>
+                    <Link to="">Terms and Condition</Link>
+                  </li>
+                  <li>
+                    <Link to="">Help Center</Link>
+                  </li>
+                  <li>
+                    <Link to="">Shipping Info</Link>
+                  </li>
+                  <li>
+                    <Link to="">Returns and Refunds</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <h1 className="font-lora-regular text-3xl">Categories</h1>
+        <div className="flex flex-col gap-3">
+          <Separator
+            orientation="horizontal"
+            className="bg-[var(--base-white)] w-0.5"
+          />
           <div className="">
-            <ul className="font-lora-regular flex flex-col gap-2">
-              <li>
-                <Link to="">Fiction</Link>
-              </li>
-              <li>
-                <Link to="">Non - Fiction</Link>
-              </li>
-              <li>
-                <Link to="">Self - Help</Link>
-              </li>
-              <li>
-                <Link to="">Children's Books</Link>
-              </li>
-              <li>
-                <Link to="">Mystery</Link>
-              </li>
-            </ul>
+            <p className="font-lora-regular text-sm lg:text-base">
+              Copyright 2025© BookVault. All Right Reserved
+            </p>
           </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          <h1 className="font-lora-regular text-3xl">Service</h1>
-          <div className="">
-            <ul className="font-lora-regular flex flex-col gap-2">
-              <li>
-                <Link to="">Privacy and Policy</Link>
-              </li>
-              <li>
-                <Link to="">Terms and Condition</Link>
-              </li>
-              <li>
-                <Link to="">Help Center</Link>
-              </li>
-              <li>
-                <Link to="">Shipping Info</Link>
-              </li>
-              <li>
-                <Link to="">Returns and Refunds</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <Separator
-          orientation="horizontal"
-          className="bg-[var(--base-white)] w-0.5"
-        />
-        <div className="">
-          <p className="font-lora-regular text-sm">
-            Copyright 2025© BookVault. All Right Reserved
-          </p>
         </div>
       </div>
     </div>
