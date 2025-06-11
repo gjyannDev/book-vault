@@ -29,7 +29,10 @@ export default function ShopCard({
       {bookInfo.map((detail, idx) => (
         <Card
           key={idx}
-          className="flex gap-0 w-full max-w-md bg-transparent border-none outline-none shadow-none rounded-none"
+          className={clsx(
+            "flex gap-0 w-full max-w-md text-[var(--primary-text)]",
+            "bg-transparent border-none outline-none shadow-none rounded-none",
+          )}
         >
           <CardHeader className="p-0">
             <img

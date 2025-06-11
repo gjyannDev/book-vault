@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 export default function CallToActionFooter() {
   return (
-    <div className="py-12 bg-[var(--secondary-clr)]">
+    <div className="py-12 bg-[var(--secondary-clr)] text-[var(--primary-text)]">
       <div
         className={clsx(
           "container flex flex-col gap-8",

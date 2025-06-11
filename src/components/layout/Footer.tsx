@@ -8,7 +8,7 @@ export default function Footer() {
     <div className="w-full bg-[var(--base-black)] text-[var(--text-white)]">
       <div
         className={clsx(
-          "flex flex-col gap-6",
+          "flex flex-col gap-6 text-[var(--text-white)]",
           "container mx-auto px-4 py-8",
           "sm:px-6 lg:px-12 xl:px-16",
           "md:py-10 lg:gap-10 xl:py-12"
