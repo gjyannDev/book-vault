@@ -1,9 +1,10 @@
 import { Package, Ribbon, Shield, Truck } from "lucide-react";
+import CallToActionFooter from "./components/layout/CallToActionFooter";
+import Footer from "./components/layout/Footer";
 import HeroSection from "./components/layout/HeroSection";
 import NavBar from "./components/layout/NavBar";
 import QualityCard from "./components/layout/QualityCard";
 import ShopCard from "./features/books/components/ShopCard";
-import CallToActionFooter from "./components/layout/CallToActionFooter";
 
 const quality_cards = [
   {
@@ -73,15 +74,20 @@ function App() {
         <HeroSection />
         <QualityCard cardDetails={quality_cards} />
         <div className="featured__books">
-          <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">Featured Books</h1>
-          <ShopCard bookInfo={products} variant={"compact"}/>
+          <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">
+            Featured Books
+          </h1>
+          <ShopCard bookInfo={products} variant={"compact"} />
         </div>
         <div className="best__books">
-          <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">Bestseller Books</h1>
-          <ShopCard bookInfo={products} variant={"featured"}/>
+          <h1 className="font-playfair-bold text-3xl lg:text-4xl xl:text-5xl">
+            Bestseller Books
+          </h1>
+          <ShopCard bookInfo={products} variant={"featured"} />
         </div>
       </div>
       <CallToActionFooter />
+      <Footer />
     </>
   );
 }
