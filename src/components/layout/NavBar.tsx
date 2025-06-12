@@ -1,5 +1,6 @@
 import { Heart, Menu, Search, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import NavMenu from "./NavMenu";
 
 export default function NavBar() {
   return (
@@ -11,21 +12,8 @@ export default function NavBar() {
               Boo<span className="text-[var(--primary-clr)]">kVault</span>
             </h1>
           </div>
-          <div className="nav__middle--content">
-            <ul className="hidden lg:flex md:gap-12 text-[var(--base-white)]">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="">Books</Link>
-              </li>
-              <li>
-                <Link to="">About us</Link>
-              </li>
-              <li>
-                <Link to="">Shop by Genre</Link>
-              </li>
-            </ul>
+          <div className="nav__middle--content hidden lg:flex">
+            <NavMenu />
           </div>
           <div className="nav__right--content">
             <div className="menu__container lg:hidden">
