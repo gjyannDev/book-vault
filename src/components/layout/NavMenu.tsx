@@ -67,7 +67,7 @@ export default function NavMenu() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link
-                to="/"
+                to="/about"
                 className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
               >
                 About us
