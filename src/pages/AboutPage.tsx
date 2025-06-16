@@ -5,7 +5,9 @@ import visionImage from "../assets/images/visionImage.png";
 export default function AboutPage() {
   return (
     <div className="text-[var(--primary-text)] mb-14">
-      <h1 className="font-playfair-bold text-3xl py-6 md:text-4xl md:py-8">ABOUT US</h1>
+      <h1 className="font-playfair-bold text-3xl py-6 md:text-4xl md:py-8">
+        ABOUT US
+      </h1>
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-4">
           <img src={aboutUsImage} className="" />
@@ -14,7 +16,7 @@ export default function AboutPage() {
               Your trusted destination for discovering, buying, and falling in
               love with books.
             </h1>
-            <p className="font-lora-regular text-sm leading-[1.5] md:text-md md:leading-">
+            <p className="font-lora-regular text-sm leading-[1.5] md:text-md md:max-w-xl">
               At BookVault, we believe books are more than just pages — they are
               gateways to knowledge, imagination, and inspiration. Founded with
               a passion for reading and a mission to make books more accessible,
@@ -25,11 +27,11 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-4">
-            <img src={visionImage} />
-            <div className="flex flex-col gap-2">
-              <h1 className="font-playfair-bold text-xl">Our Vision</h1>
+        <div className="flex flex-col gap-8 md:gap-12">
+          <div className="flex flex-col gap-2 md:flex-row md:gap-6">
+            <img src={visionImage} className="md:w-1/2 md:block" />
+            <div className="flex flex-col md:w-1/2 md:gap-2">
+              <h1 className="font-playfair-bold text-xl md:text-2xl">Our Vision</h1>
               <p className="font-lora-regular text-sm">
                 We envision a future where books are not a luxury but a
                 lifestyle, empowering people to learn, grow, and connect through
@@ -37,10 +39,10 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-4">
-            <img src={missionImage} />
-            <div className="flex flex-col gap-2">
-              <h1 className="font-playfair-bold text-xl">Our Mission</h1>
+          <div className="flex flex-col gap-2 md:flex-row-reverse">
+            <img src={missionImage} className="md:w-1/2 md:block" />
+            <div className="flex flex-col md:w-1/2 md:gap-2">
+              <h1 className="font-playfair-bold text-xl md:text-2xl">Our Mission</h1>
               <p className="font-lora-regular text-sm">
                 We envision a future where books are not a luxury but a
                 lifestyle, empowering people to learn, grow, and connect through
