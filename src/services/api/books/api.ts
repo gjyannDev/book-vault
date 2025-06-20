@@ -17,19 +17,3 @@ export async function getBookByCategory(query: string) {
     console.error(error);
   }
 }
-
-export async function getFictionBooks() {
-  try {
-    const res = await api.get("", {
-      params: {
-        q: `subject:fiction`,
-        maxResults: 16,
-        key: apiKey,
-      },
-    });
-
-    return res.data.items ?? [];
-  } catch (error) {
-    console.error(error);
-  }
-}
