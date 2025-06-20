@@ -7,13 +7,7 @@ import {
 } from "@/components/ui/card";
 import clsx from "clsx";
 import { Heart, ShoppingCart } from "lucide-react";
-
-interface BookInfo {
-  image: string;
-  price: string;
-  title: string;
-  description: string;
-}
+import type { BookInfo } from "@/types/bookTypes";
 
 interface ShopCardProps {
   bookInfo: BookInfo[];
