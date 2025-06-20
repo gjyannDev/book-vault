@@ -29,7 +29,7 @@ export default function NavMenu() {
                 <li className="flex flex-col gap-2">
                   <NavigationMenuLink asChild>
                     <Link
-                      to=""
+                      to="/books/all"
                       className="text-[var(--primary-text)] hover:text-[red] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       All books
@@ -37,7 +37,7 @@ export default function NavMenu() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link
-                      to=""
+                      to="/books/bestseller"
                       className="text-[var(--primary-text)] hover:text-[var(--primary-clr)] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       Bestsellers
@@ -45,7 +45,7 @@ export default function NavMenu() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link
-                      to=""
+                      to="/books/fiction"
                       className="text-[var(--primary-text)] hover:text-[var(--primary-clr)] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       Fiction
@@ -53,7 +53,7 @@ export default function NavMenu() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link
-                      to=""
+                      to="/books/nonfiction"
                       className="text-[var(--primary-text)] hover:text-[var(--primary-clr)] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       Non - Fiction
