@@ -6,7 +6,7 @@ import ShopCard from "../components/ShopCard";
 
 export default function BookListPage() {
   const { all } = useParams();
-  const { bookByCategory } = useFetchData(all);
+  const { bookByCategory, isLoading} = useFetchData(all);
   const books = useMemo(
     () => simplifiedGoogleBooks(bookByCategory),
     [bookByCategory]
@@ -26,7 +26,7 @@ export default function BookListPage() {
       </div>
       <div className=""></div>
       <div className="">
-        <ShopCard bookInfo={books} variant="compact" />
+        <ShopCard bookInfo={books} variant="compact" isLoading={isLoading}/>
       </div>
     </div>
   );

@@ -1,15 +1,17 @@
 import { Skeleton } from "../ui/skeleton";
 
-export default function SkeletonCard() {
+export default function SkeletonCard({ idx }: { idx: number }) {
   return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="w-full object-cover h-96 lg:h-72" />
-      <div className="flex flex-col gap-4">
-        <Skeleton className="w-4 h-4" />
-        <Skeleton className="w-8 h-8" />
+    <div key={idx} className="w-full max-w-md space-y-3 pt-6">
+      <Skeleton className="w-full h-96 lg:h-72 bg-gray-300 animate-pulse rounded" />
+      <Skeleton className="w-24 h-4 bg-gray-300 animate-pulse rounded" />
+      <div className="space-y-2">
+        <Skeleton className="w-full h-5 bg-gray-300 animate-pulse rounded" />
+        <Skeleton className="w-5/6 h-5 bg-gray-300 animate-pulse rounded" />
       </div>
-      <div className="flex gap-6">
-        <Skeleton className="w-4 h-4" />
+      <div className="flex gap-4 mt-4">
+        <Skeleton className="w-24 h-8 bg-gray-300 animate-pulse rounded" />
+        <Skeleton className="w-20 h-8 bg-gray-300 animate-pulse rounded" />
       </div>
     </div>
   );
