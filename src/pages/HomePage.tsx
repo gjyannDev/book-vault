@@ -1,5 +1,5 @@
 import { Package, Ribbon, Shield, Truck } from "lucide-react";
-import HeroSection from "../components/layout/HeroSection";
+import HeroSection from "../components/pages/HeroSection";
 import QualityCard from "../components/layout/QualityCard";
 import { headerBase } from "../components/shared/classNames";
 import ShopCard from "../features/books/components/ShopCard";
