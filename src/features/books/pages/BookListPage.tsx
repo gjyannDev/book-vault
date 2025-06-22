@@ -1,13 +1,19 @@
+import PaginationCard from "@/components/layout/PaginationCard";
 import { simplifiedGoogleBooks } from "@/lib/transformer";
 import useFetchData from "@/services/api/useFetchData";
 import clsx from "clsx";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import ShopCard from "../components/ShopCard";
 
 export default function BookListPage() {
   const { all } = useParams();
-  const { bookByCategory, isLoading } = useFetchData(all);
+  const [page, setPage] = useState(0);
+  const max_result = 16;
+  const { bookByCategory, isLoading, totalItems } = useFetchData(
+    all,
+    page * max_result
+  );
   const books = useMemo(
     () => simplifiedGoogleBooks(bookByCategory),
     [bookByCategory]
@@ -16,6 +22,10 @@ export default function BookListPage() {
     ?.split(" ")
     .map((el) => el.charAt(0).toUpperCase() + el.slice(1).toLowerCase())
     .join("");
+
+  useEffect(() => {
+    setPage(0);
+  }, [all]);
 
   return (
     <div
@@ -47,6 +57,12 @@ export default function BookListPage() {
               bookInfo={books}
               variant="compact"
               isLoading={isLoading}
+            />
+            <PaginationCard
+              totalItems={totalItems}
+              page={page}
+              setPage={setPage}
+              maxResults={max_result}
             />
           </div>
         </div>

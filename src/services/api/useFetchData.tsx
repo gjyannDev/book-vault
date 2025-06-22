@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { getBookByCategory } from "./books/api";
 
-export default function useFetchData(category: string = "fiction") {
+export default function useFetchData(
+  category: string = "fiction",
+  page: number = 0
+) {
   const [fictionBooks, setFictionBooks] = useState({});
   const [bookByCategory, setBookByCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,12 +24,12 @@ export default function useFetchData(category: string = "fiction") {
   //   }
   //   fetchData();
   // }, []);
-
+  
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
       try {
-        const get_books_by_category = await getBookByCategory(category);
+        const get_books_by_category = await getBookByCategory(category, page);
         setBookByCategory(get_books_by_category?.items || []);
         setTotalItems(get_books_by_category?.totalItems || 0);
       } catch (error) {
@@ -36,7 +39,7 @@ export default function useFetchData(category: string = "fiction") {
       }
     }
     fetchData();
-  }, [category]);
+  }, [category, page]);
 
   return {
     fictionBooks,
