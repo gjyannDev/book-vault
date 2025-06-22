@@ -33,3 +33,9 @@ export interface PaginationCard {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   maxResults: number;
 }
+
+export interface ShopCardProps {
+  bookInfo: BookInfo[];
+  variant?: "standard" | "featured" | "compact";
+  isLoading: boolean;
+}

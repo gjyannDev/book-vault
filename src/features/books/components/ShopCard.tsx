@@ -6,15 +6,9 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import type { BookInfo } from "@/types/bookTypes";
+import type { ShopCardProps } from "@/types/bookTypes";
 import clsx from "clsx";
 import { Heart, ShoppingCart } from "lucide-react";
-
-interface ShopCardProps {
-  bookInfo: BookInfo[];
-  variant?: "standard" | "featured" | "compact";
-  isLoading: boolean;
-}
 
 export default function ShopCard({
   bookInfo,
@@ -25,7 +19,7 @@ export default function ShopCard({
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
       {bookInfo.map((detail, idx) =>
         isLoading ? (
-          <SkeletonCard idx={idx}/>
+          <SkeletonCard idx={idx} />
         ) : (
           <Card
             key={idx}

@@ -14,6 +14,7 @@ export async function getBookByCategory(
         startIndex,
         maxResults,
         key: apiKey,
+        orderBy: "newest",
       },
     });
 
