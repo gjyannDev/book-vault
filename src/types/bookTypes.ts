@@ -26,3 +26,10 @@ export interface RawData {
     };
   };
 }
+
+export interface PaginationCard {
+  totalItems: number;
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  maxResults: number;
+}
