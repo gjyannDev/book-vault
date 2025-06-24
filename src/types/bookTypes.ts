@@ -6,6 +6,7 @@ export interface BookInfo {
 }
 
 export interface RawData {
+  id: string,
   volumeInfo: {
     title: string;
     authors: string[];

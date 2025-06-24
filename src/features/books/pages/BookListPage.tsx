@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import ShopCard from "../components/ShopCard";
+import BookFilter from "@/components/filters/BookFilter";
 
 export default function BookListPage() {
   const { all } = useParams();
@@ -26,6 +27,9 @@ export default function BookListPage() {
   useEffect(() => {
     setPage(0);
   }, [all]);
+
+  console.log("Data: ", books);
+  console.log("Raw Data: ", bookByCategory);
 
   return (
     <div
@@ -51,7 +55,10 @@ export default function BookListPage() {
           </p>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="">Filter: </div>
+          <div className="flex items-center gap-4">
+            <div className="">Filter: </div>
+            <BookFilter />
+          </div>
           <div className="">
             <ShopCard
               bookInfo={books}

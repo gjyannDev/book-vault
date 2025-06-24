@@ -19,7 +19,7 @@ export default function ShopCard({
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
       {bookInfo.map((detail, idx) =>
         isLoading ? (
-          <SkeletonCard idx={idx} />
+          Array.from({ length: 8 }).map((_, i) => <SkeletonCard idx={i} />)
         ) : (
           <Card
             key={idx}
