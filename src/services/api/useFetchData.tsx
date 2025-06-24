@@ -5,7 +5,6 @@ export default function useFetchData(
   category: string = "fiction",
   page: number = 0
 ) {
-  const [fictionBooks, setFictionBooks] = useState({});
   const [bookByCategory, setBookByCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [totalItems, setTotalItems] = useState(0);
@@ -24,7 +23,7 @@ export default function useFetchData(
   //   }
   //   fetchData();
   // }, []);
-  
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
@@ -42,8 +41,6 @@ export default function useFetchData(
   }, [category, page]);
 
   return {
-    fictionBooks,
-    setFictionBooks,
     isLoading,
     bookByCategory,
     totalItems,
