@@ -4,8 +4,8 @@ export function simplifiedGoogleBooks(rawData: RawData[]): BookInfo[] {
   return rawData.map((item) => {
     const amount = item.saleInfo?.listPrice?.amount;
     const currency = item.saleInfo?.listPrice?.currencyCode;
-
     return {
+      id: item.id,
       image:
         item.volumeInfo?.imageLinks?.thumbnail ||
         item.volumeInfo?.imageLinks?.smallThumbnail ||
