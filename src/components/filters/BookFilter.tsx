@@ -1,15 +1,24 @@
+import { Settings2 } from "lucide-react";
 import PriceFilter from "./PriceFilter";
+import SortFilter from "./SortFilter";
 
 export default function BookFilter() {
-
   return (
-   <div className="">
-    <div className="">
-      <PriceFilter />
+    <div className="w-full">
+      <div className="flex items-center gap-4 md:hidden">
+        <Settings2 className="h-4 w-4" />
+        <p className="font-lora-regular">Filter and sort</p>
+      </div>
+      <div className="hidden md:flex md:w-inherit md:justify-between">
+        <div className="flex items-center">
+          <p className="font-lora-regular">Filter: </p>
+          <PriceFilter />
+        </div>
+        <div className=" flex items-center">
+          <p className="font-lora-regular">Sort by:</p>
+          <SortFilter />
+        </div>
+      </div>
     </div>
-    {/* <div className="">
-      <PriceFilter />
-    </div> */}
-   </div>
   );
 }

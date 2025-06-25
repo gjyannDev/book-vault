@@ -55,8 +55,7 @@ export default function BookListPage() {
           </p>
         </div>
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-4">
-            <div className="">Filter: </div>
+          <div className="flex items-center">
             <BookFilter />
           </div>
           <div className="">
