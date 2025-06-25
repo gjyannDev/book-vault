@@ -6,7 +6,7 @@ export interface BookInfo {
 }
 
 export interface RawData {
-  id: string,
+  id: string;
   volumeInfo: {
     title: string;
     authors: string[];
@@ -21,6 +21,7 @@ export interface RawData {
     averageRating: string;
   };
   saleInfo: {
+    saleability: string;
     listPrice: {
       amount: number;
       currencyCode: string;
@@ -39,4 +40,14 @@ export interface ShopCardProps {
   bookInfo: BookInfo[];
   variant?: "standard" | "featured" | "compact";
   isLoading: boolean;
+}
+
+export interface BookFilter {
+  setBooks: React.Dispatch<React.SetStateAction<BookInfo[]>>;
+  books: BookInfo[];
+}
+
+export interface MinMaxPriceRange {
+  min: number;
+  max: number;
 }
