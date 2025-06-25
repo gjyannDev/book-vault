@@ -1,11 +1,12 @@
+import BookFilter from "@/components/filters/BookFilter";
 import PaginationCard from "@/components/layout/PaginationCard";
 import { simplifiedGoogleBooks } from "@/lib/transformer";
 import useFetchData from "@/services/api/useFetchData";
+import type { BookInfo } from "@/types/bookTypes";
 import clsx from "clsx";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ShopCard from "../components/ShopCard";
-import BookFilter from "@/components/filters/BookFilter";
 
 export default function BookListPage() {
   const { all } = useParams();
@@ -15,10 +16,9 @@ export default function BookListPage() {
     all,
     page * max_result
   );
-  const books = useMemo(
-    () => simplifiedGoogleBooks(bookByCategory),
-    [bookByCategory]
-  );
+  const [books, setBooks] = useState<BookInfo[]>([]);
+  const [originalBooks, setOrginalBooks] = useState<BookInfo[]>([]);
+
   const header_text = all
     ?.split(" ")
     .map((el) => el.charAt(0).toUpperCase() + el.slice(1).toLowerCase())
@@ -28,8 +28,14 @@ export default function BookListPage() {
     setPage(0);
   }, [all]);
 
+  useEffect(() => {
+    if (bookByCategory?.length) {
+      setBooks(simplifiedGoogleBooks(bookByCategory));
+      setOrginalBooks(simplifiedGoogleBooks(bookByCategory));
+    }
+  }, [bookByCategory]);
+
   console.log("Data: ", books);
-  console.log("Raw Data: ", bookByCategory);
 
   return (
     <div
@@ -56,7 +62,7 @@ export default function BookListPage() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-center">
-            <BookFilter />
+            <BookFilter setBooks={setBooks} books={originalBooks} />
           </div>
           <div className="">
             <ShopCard

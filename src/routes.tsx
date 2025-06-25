@@ -12,8 +12,8 @@ const routes = [
       { path: "about", element: <AboutPage /> },
       { path: "books/:all", element: <BookListPage /> },
       { path: "books/:bestseller", element: <BookListPage /> },
-      { path: "books/:fiction", element: <BookListPage /> },
-      { path: "books/:nonfiction", element: <BookListPage /> },
+      { path: "books/:Fiction", element: <BookListPage /> },
+      { path: "books/:Nonfiction", element: <BookListPage /> },
     ],
   },
 ];

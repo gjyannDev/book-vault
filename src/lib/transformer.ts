@@ -1,4 +1,4 @@
-import type { BookInfo, RawData} from "@/types/bookTypes";
+import type { BookInfo, RawData } from "@/types/bookTypes";
 
 export function simplifiedGoogleBooks(rawData: RawData[]): BookInfo[] {
   return rawData.map((item) => {

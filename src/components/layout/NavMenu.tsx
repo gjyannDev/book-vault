@@ -45,7 +45,7 @@ export default function NavMenu() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link
-                      to="/books/fiction"
+                      to="/books/Fiction"
                       className="text-[var(--primary-text)] hover:text-[var(--primary-clr)] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       Fiction
@@ -53,7 +53,7 @@ export default function NavMenu() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link
-                      to="/books/nonfiction"
+                      to="/books/Nonfiction"
                       className="text-[var(--primary-text)] hover:text-[var(--primary-clr)] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       Non - Fiction
