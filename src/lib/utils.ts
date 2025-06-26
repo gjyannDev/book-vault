@@ -29,3 +29,17 @@ export function sortWordAlphabetically(
 
   setBooks(sorted_books);
 }
+
+export function sortPriceMaxMin(
+  type: string,
+  data: BookInfo[],
+  setBooks: (books: BookInfo[]) => void
+) {
+  const sorted_books = [...data].sort((a, b) => {
+    const priceA = parseInt(a.price.slice(1), 10);
+    const priceB = parseInt(b.price.slice(1), 10);
+    return type === "asc" ? priceA - priceB : priceB - priceA;
+  });
+
+  setBooks(sorted_books);
+}
