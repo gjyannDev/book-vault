@@ -1,3 +1,5 @@
+import { sortWordAlphabetically } from "@/lib/utils";
+import type { BookFilter } from "@/types/bookTypes";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -9,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-export default function SortFilter() {
+export default function SortFilter({ setBooks, books }: BookFilter) {
   const [sortOpen, setSortOpen] = useState(false);
   const sort_options = [
     { label: "Alphabetically, A-Z", value: "Alphabetically A-Z" },
@@ -17,6 +19,19 @@ export default function SortFilter() {
     { label: "Price, low to high", value: "Price low to high" },
     { label: "Price, high to low", value: "Price high to low" },
   ];
+
+  function handleSorting(value: string) {
+    switch (value) {
+      case "Alphabetically A-Z":
+        sortWordAlphabetically("asc", books, setBooks);
+        break;
+      case "Alphabetically Z-A":
+        sortWordAlphabetically("desc", books, setBooks);
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <DropdownMenu onOpenChange={setSortOpen}>
@@ -33,7 +48,10 @@ export default function SortFilter() {
       <DropdownMenuContent>
         <DropdownMenuGroup>
           {sort_options.map((option) => (
-            <DropdownMenuItem key={option.value}>
+            <DropdownMenuItem
+              key={option.value}
+              onClick={() => handleSorting(option.value)}
+            >
               {option.label}
             </DropdownMenuItem>
           ))}

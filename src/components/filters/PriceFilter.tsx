@@ -34,12 +34,9 @@ export default function PriceFilter({ setBooks, books }: BookFilter) {
 
     const filtered_books = books.filter((item) => {
       const price_val = parseFloat(item.price.slice(1));
-      console.log("price value: ", price_val)
       if (isNaN(price_val)) return false;
       return price_val >= min && price_val <= max;
     });
-
-    console.log("filted_books: ", filtered_books);
 
     setBooks(filtered_books);
   }

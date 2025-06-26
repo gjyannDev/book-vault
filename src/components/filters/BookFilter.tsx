@@ -17,7 +17,7 @@ export default function BookFilter({ setBooks, books }: BookFilter) {
         </div>
         <div className=" flex items-center">
           <p className="font-lora-regular">Sort by:</p>
-          <SortFilter />
+          <SortFilter setBooks={setBooks} books={books} />
         </div>
       </div>
     </div>
