@@ -1,4 +1,4 @@
-import { sortWordAlphabetically } from "@/lib/utils";
+import { sortPriceMaxMin, sortWordAlphabetically } from "@/lib/utils";
 import type { BookFilter } from "@/types/bookTypes";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
@@ -27,6 +27,12 @@ export default function SortFilter({ setBooks, books }: BookFilter) {
         break;
       case "Alphabetically Z-A":
         sortWordAlphabetically("desc", books, setBooks);
+        break;
+      case "Price low to high":
+        sortPriceMaxMin("asc", books, setBooks);
+        break;
+      case "Price high to low":
+        sortPriceMaxMin("desc", books, setBooks);
         break;
       default:
         break;
