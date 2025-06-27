@@ -1,4 +1,5 @@
 export interface BookInfo {
+  id: string;
   image: string;
   price: string;
   title: string;
@@ -40,6 +41,7 @@ export interface ShopCardProps {
   bookInfo: BookInfo[];
   variant?: "standard" | "featured" | "compact";
   isLoading: boolean;
+  category: string;
 }
 
 export interface BookFilter {

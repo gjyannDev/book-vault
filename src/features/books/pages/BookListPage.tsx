@@ -10,6 +10,7 @@ import ShopCard from "../components/ShopCard";
 
 export default function BookListPage() {
   const { all } = useParams();
+  const category = all ?? "Fiction";
   const [page, setPage] = useState(0);
   const max_result = 16;
   const { bookByCategory, isLoading, totalItems } = useFetchData(
@@ -34,8 +35,6 @@ export default function BookListPage() {
       setOrginalBooks(simplifiedGoogleBooks(bookByCategory));
     }
   }, [bookByCategory]);
-
-  console.log("Data: ", books);
 
   return (
     <div
@@ -69,6 +68,7 @@ export default function BookListPage() {
               bookInfo={books}
               variant="compact"
               isLoading={isLoading}
+              category={category}
             />
             <PaginationCard
               totalItems={totalItems}

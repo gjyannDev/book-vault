@@ -9,12 +9,16 @@ import {
 import type { ShopCardProps } from "@/types/bookTypes";
 import clsx from "clsx";
 import { Heart, ShoppingCart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ShopCard({
   bookInfo,
   variant = "standard",
   isLoading = true,
+  category,
 }: ShopCardProps) {
+  const navigate = useNavigate();
+
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
       {bookInfo.map((detail, idx) =>
@@ -27,6 +31,11 @@ export default function ShopCard({
               "flex gap-0 w-full max-w-md text-[var(--primary-text)]",
               "bg-transparent border-none outline-none shadow-none rounded-none"
             )}
+            onClick={() =>
+              navigate(`/books/${category}/${detail.id}`, {
+                state: { bookInfo },
+              })
+            }
           >
             <CardHeader className="p-0">
               <img
