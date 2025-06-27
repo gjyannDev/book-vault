@@ -4,6 +4,7 @@ export interface BookInfo {
   price: string;
   title: string;
   description: string;
+  authors: string[];
 }
 
 export interface RawData {

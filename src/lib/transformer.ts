@@ -15,6 +15,7 @@ export function simplifiedGoogleBooks(rawData: RawData[]): BookInfo[] {
         : "Not for sale",
       title: item.volumeInfo?.title || "No title available",
       description: item.volumeInfo?.description || "No description available",
+      authors: item.volumeInfo?.authors || "No Author",
     };
   });
 }

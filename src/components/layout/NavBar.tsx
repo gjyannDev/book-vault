@@ -5,7 +5,7 @@ import NavMenu from "./NavMenu";
 export default function NavBar() {
   return (
     <div className="w-full bg-[var(--bg-dark)]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-6">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-14 xl:px-16 py-6">
         <nav className="flex justify-between items-center">
           <div className="nav__left--content">
             <h1 className="text-3xl font-playfair-bold text-[var(--text-white)]">

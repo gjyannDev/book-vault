@@ -33,7 +33,7 @@ export default function ShopCard({
             )}
             onClick={() =>
               navigate(`/books/${category}/${detail.id}`, {
-                state: { bookInfo },
+                state: { bookInfo, category },
               })
             }
           >
