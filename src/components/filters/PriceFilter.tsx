@@ -1,4 +1,4 @@
-import { getMinMaxPriceRange } from "@/lib/utils";
+import { getMinMaxPriceRange } from "@/lib/utils/utils";
 import type { BookFilter } from "@/types/bookTypes";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";

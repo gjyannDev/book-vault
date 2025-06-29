@@ -58,7 +58,7 @@ export default function BookListPage() {
             exercitationem officia sequi mollitia doloribus veritatis nemo nisi.
             Nesciunt, cumque consectetur.
           </p>
-        </div>
+        </div>z
         <div className="flex flex-col gap-4">
           <div className="flex items-center">
             <BookFilter setBooks={setBooks} books={originalBooks} />
