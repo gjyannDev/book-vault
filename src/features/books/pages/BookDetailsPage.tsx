@@ -18,13 +18,14 @@ export default function BookDetailsPage() {
     <div
       className={clsx(
         "font-lora-regular text-[var(--primary-text)] my-4",
-        "md:my-10 lg:my-12 xl:my-14"
+        "md:my-6 lg:my-8 xl:my-10"
       )}
     >
       <div
         className={clsx(
-          "flex items-center gap-2 self-start mb-4",
-          "text-[var(--primary-text)]"
+          "flex items-center gap-2 self-start mb-4 cursor-pointer",
+          "text-[var(--primary-text)]",
+          "md:mb-6 lg:mb-8 xl:mb-10"
         )}
         onClick={() => navigate(`/books/${category}`)}
       >
@@ -35,7 +36,11 @@ export default function BookDetailsPage() {
         <img
           src={books?.image}
           alt="book cover image"
-          className="w-full md:w-[472px] md:h-[472px]"
+          className={clsx(
+            "w-full",
+            "md:w-[472px] md:h-[472px]",
+            "xl:w-[572px] xl:h-[572px]"
+          )}
         />
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-6 md:gap-8">
@@ -43,7 +48,8 @@ export default function BookDetailsPage() {
               <h1
                 className={clsx(
                   "font-playfair-bold text-4xl mt-2",
-                  "md:text-5xl md:mt-0"
+                  "md:text-5xl md:mt-0",
+                  "xl:leading-[1.3] xl:max-w-2xl"
                 )}
               >
                 {books?.title}
@@ -56,10 +62,16 @@ export default function BookDetailsPage() {
             <div className="flex flex-col gap-2 md">
               <p className="md:text-lg">{`${books?.price} PHP`}</p>
               <div className="flex gap-4 items-center">
-                <Button className="px-6 py-4 text-sm rounded-xs lg:px-3 lg:py-1 lg:text-xs">
+                <Button className="px-6 py-4 text-sm rounded-xs lg:px-8 lg:py-5 lg:text-md">
                   Add to cart
                 </Button>
-                <Heart color="var(--base-black)" width={28} height={28} />
+                <Heart
+                  className={clsx(
+                    "w-7 h-7 text-[var(--base-black)]",
+                    "md:w-8 md:h-8",
+                    "xl:w-9 xl:h-9"
+                  )}
+                />
               </div>
             </div>
           </div>
@@ -74,7 +86,7 @@ export default function BookDetailsPage() {
               {books?.description}
             </p>
             <p
-              className="underline text-sm mt-2"
+              className="underline text-sm mt-2 cursor-pointer"
               onClick={() => setExpanded(!expanded)}
             >
               {expanded ? "Show Less" : "Show More"}

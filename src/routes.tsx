@@ -15,7 +15,8 @@ const routes = [
       { path: "books/:bestseller", element: <BookListPage /> },
       { path: "books/:Fiction", element: <BookListPage /> },
       { path: "books/:Nonfiction", element: <BookListPage /> },
-      { path: "books/:Fiction/:id", element: <BookDetailsPage /> },
+      { path: "books/:category/:id", element: <BookDetailsPage /> },
+      // { path: "books/:Nonfiction/:id", element: <BookDetailsPage /> },
     ],
   },
 ];
