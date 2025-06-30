@@ -1,4 +1,4 @@
-import { Heart, Menu, Search, ShoppingCart } from "lucide-react";
+import { User, Menu, Search, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 
@@ -26,8 +26,8 @@ export default function NavBar() {
               <Link to="">
                 <ShoppingCart color="var(--base-white)" />
               </Link>
-              <Link to="">
-                <Heart color="var(--base-white)" />
+              <Link to="/signin">
+                <User color="var(--base-white)"/>
               </Link>
             </div>
           </div>

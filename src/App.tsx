@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className="container flex flex-col gap-24 mx-auto px-4 sm:px-8 lg:px-14">
+      <div className="container flex flex-col gap-24 mx-auto px-4 sm:px-8 lg:px-14 text-[var(--primary-text)]">
         <Outlet />
       </div>
       <CallToActionFooter />
