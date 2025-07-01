@@ -1,3 +1,5 @@
+import type { z } from "zod";
+
 export interface BookInfo {
   id: string;
   image: string;
@@ -54,3 +56,5 @@ export interface MinMaxPriceRange {
   min: number;
   max: number;
 }
+
+// export type signInSchema = z.infer<typeof Sign>
