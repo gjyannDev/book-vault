@@ -4,6 +4,7 @@ import BookListPage from "./features/books/pages/BookListPage";
 import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
+import SignupPage from "./pages/SignupPage";
 
 const routes = [
   {
@@ -13,6 +14,7 @@ const routes = [
       { index: true, element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
       { path: "signin", element: <SigninPage /> },
+      { path: "signup", element: <SignupPage /> },
       { path: "books/:all", element: <BookListPage /> },
       { path: "books/:bestseller", element: <BookListPage /> },
       { path: "books/:Fiction", element: <BookListPage /> },

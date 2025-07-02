@@ -33,7 +33,7 @@ export default function SigninPage() {
               "xl:text-[2.5rem]"
             )}
           >
-            Create your account
+            Welcome Back!
           </h1>
           <p className="font-lora-regular text-sm xl:text-base">
             Please enter your details.
