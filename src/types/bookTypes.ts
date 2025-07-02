@@ -1,4 +1,10 @@
 import { signInSchema } from "@/schemas/auth.schemas";
+import type {
+  FieldErrors,
+  SubmitHandler,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from "react-hook-form";
 import type { z } from "zod";
 
 export interface BookInfo {
@@ -59,3 +65,10 @@ export interface MinMaxPriceRange {
 }
 
 export type TSignInSchema = z.infer<typeof signInSchema>;
+
+export interface AuthFormProps {
+  handleSubmit: UseFormHandleSubmit<TSignInSchema>;
+  onSubmit: SubmitHandler<TSignInSchema>;
+  register: UseFormRegister<TSignInSchema>;
+  errors: FieldErrors<TSignInSchema>;
+}
