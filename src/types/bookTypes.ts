@@ -75,6 +75,20 @@ export interface AuthFormProps {
   isSubmitting: boolean;
 }
 
-export interface NavBarProps {
+export interface UserType {
   user: User | null;
+}
+
+export interface AccountInfo {
+  email: string | null;
+  profileName: string | null;
+  imageUrl: string | null;
+}
+
+export interface AccountData {
+  uid: string;
+  accessToken: string;
+  displayName: string;
+  userEmail: string;
+  photoUrl: string;
 }
