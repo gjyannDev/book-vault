@@ -10,7 +10,7 @@ export default function SigninPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting},
     reset,
   } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
@@ -44,6 +44,7 @@ export default function SigninPage() {
           onSubmit={onSubmit}
           register={register}
           errors={errors}
+          isSubmitting={isSubmitting}
         />
       </div>
       <p className="font-lora-regular text-xs">
