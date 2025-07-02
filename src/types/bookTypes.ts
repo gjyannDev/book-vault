@@ -71,4 +71,5 @@ export interface AuthFormProps {
   onSubmit: SubmitHandler<TSignInSchema>;
   register: UseFormRegister<TSignInSchema>;
   errors: FieldErrors<TSignInSchema>;
+  isSubmitting: boolean;
 }

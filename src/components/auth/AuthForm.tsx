@@ -10,6 +10,7 @@ export default function AuthForm({
   onSubmit,
   register,
   errors,
+  isSubmitting,
 }: AuthFormProps) {
   return (
     <div className="">
@@ -40,7 +41,7 @@ export default function AuthForm({
           )}
           type="submit"
         >
-          Sign in
+          {isSubmitting ? "Signing in....." : "Sign in"}
         </Button>
       </form>
     </div>

@@ -1,5 +1,6 @@
 import AuthForm from "@/components/auth/AuthForm";
 import { signInSchema } from "@/schemas/auth.schemas";
+import { createNewUser } from "@/services/api/auth/authApi";
 import type { TSignInSchema } from "@/types/bookTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
@@ -10,15 +11,14 @@ export default function SignupPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting},
     reset,
   } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
   });
 
   function onSubmit(data: TSignInSchema) {
-    console.log("data submitted: ", data);
-    //it reset after submitting
+    createNewUser(data.email, data.password);
     reset();
   }
 
@@ -44,6 +44,7 @@ export default function SignupPage() {
           onSubmit={onSubmit}
           register={register}
           errors={errors}
+          isSubmitting={isSubmitting}
         />
       </div>
       <p className="font-lora-regular text-xs">
