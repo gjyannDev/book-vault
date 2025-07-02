@@ -1,3 +1,4 @@
+import { signInSchema } from "@/schemas/auth.schemas";
 import type { z } from "zod";
 
 export interface BookInfo {
@@ -57,4 +58,4 @@ export interface MinMaxPriceRange {
   max: number;
 }
 
-// export type signInSchema = z.infer<typeof Sign>
+export type TSignInSchema = z.infer<typeof signInSchema>;
