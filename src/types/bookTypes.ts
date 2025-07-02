@@ -73,6 +73,7 @@ export interface AuthFormProps {
   register: UseFormRegister<TSignInSchema>;
   errors: FieldErrors<TSignInSchema>;
   isSubmitting: boolean;
+  formType: string;
 }
 
 export interface UserType {

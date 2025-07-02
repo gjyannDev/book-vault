@@ -5,8 +5,9 @@ import type { TSignInSchema } from "@/types/bookTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+////TODO: Add validation in if the sign up is error
 export default function SignupPage() {
   const {
     register,
@@ -16,10 +17,12 @@ export default function SignupPage() {
   } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
   });
+  const navigate = useNavigate();
 
   function onSubmit(data: TSignInSchema) {
     createNewUser(data.email, data.password);
     reset();
+    navigate("/")
   }
 
   return (
@@ -45,6 +48,7 @@ export default function SignupPage() {
           register={register}
           errors={errors}
           isSubmitting={isSubmitting}
+          formType="sign up"
         />
       </div>
       <p className="font-lora-regular text-xs">

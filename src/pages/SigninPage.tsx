@@ -1,25 +1,28 @@
 import AuthForm from "@/components/auth/AuthForm";
 import { signInSchema } from "@/schemas/auth.schemas";
+import { signInUser } from "@/services/api/auth/authApi";
 import type { TSignInSchema } from "@/types/bookTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+//TODO: Add validation in if the sign in is error
 export default function SigninPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting},
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
   });
+  const navigate = useNavigate();
 
   function onSubmit(data: TSignInSchema) {
-    console.log("data submitted: ", data);
-    //it reset after submitting
+    signInUser(data.email, data.password);
     reset();
+    navigate("/");
   }
 
   return (
@@ -45,6 +48,7 @@ export default function SigninPage() {
           register={register}
           errors={errors}
           isSubmitting={isSubmitting}
+          formType="sign in"
         />
       </div>
       <p className="font-lora-regular text-xs">

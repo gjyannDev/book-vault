@@ -11,6 +11,7 @@ export default function AuthForm({
   register,
   errors,
   isSubmitting,
+  formType,
 }: AuthFormProps) {
   return (
     <div className="">
@@ -41,7 +42,7 @@ export default function AuthForm({
           )}
           type="submit"
         >
-          {isSubmitting ? "Signing in....." : "Sign in"}
+          {formType == "sign in" ? "Sign in" : "Sign up"}
         </Button>
       </form>
     </div>
