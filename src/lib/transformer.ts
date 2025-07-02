@@ -1,4 +1,9 @@
-import type { BookInfo, RawData } from "@/types/bookTypes";
+import type {
+  AccountInfo,
+  BookInfo,
+  RawData,
+} from "@/types/bookTypes";
+import type { User } from "firebase/auth";
 
 export function simplifiedGoogleBooks(rawData: RawData[]): BookInfo[] {
   return rawData.map((item) => {
@@ -18,4 +23,12 @@ export function simplifiedGoogleBooks(rawData: RawData[]): BookInfo[] {
       authors: item.volumeInfo?.authors || "No Author",
     };
   });
+}
+
+export function simplifiedAccountDetails(user: User): AccountInfo {
+  return {
+    email: user?.email,
+    profileName: user?.displayName,
+    imageUrl: user?.photoURL,
+  };
 }
