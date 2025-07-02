@@ -1,8 +1,9 @@
-import { User, Menu, Search, ShoppingCart } from "lucide-react";
+import type { NavBarProps } from "@/types/bookTypes";
+import { Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 
-export default function NavBar() {
+export default function NavBar({ user }: NavBarProps) {
   return (
     <div className="w-full bg-[var(--bg-dark)]">
       <div className="container mx-auto px-4 sm:px-8 lg:px-14 xl:px-16 py-6">
@@ -26,8 +27,8 @@ export default function NavBar() {
               <Link to="">
                 <ShoppingCart color="var(--base-white)" />
               </Link>
-              <Link to="/signin">
-                <User color="var(--base-white)"/>
+              <Link to={user ? "/account" : "/signin"}>
+                <User color="var(--base-white)" />
               </Link>
             </div>
           </div>

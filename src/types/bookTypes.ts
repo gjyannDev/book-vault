@@ -1,4 +1,5 @@
 import { signInSchema } from "@/schemas/auth.schemas";
+import type { User } from "firebase/auth";
 import type {
   FieldErrors,
   SubmitHandler,
@@ -72,4 +73,8 @@ export interface AuthFormProps {
   register: UseFormRegister<TSignInSchema>;
   errors: FieldErrors<TSignInSchema>;
   isSubmitting: boolean;
+}
+
+export interface NavBarProps {
+  user: User | null;
 }
