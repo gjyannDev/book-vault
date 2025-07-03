@@ -1,11 +1,13 @@
+import { getSigninCodeError } from "@/lib/utils/auth/auth.utils";
 import { auth } from "@/services/lib/firebase/fireBaseClient";
+import type { AuthApiTypes, AuthResultType } from "@/types/bookTypes";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 
-export async function createNewUser(email: string, password: string) {
+export async function createNewUser({ email, password }: AuthApiTypes) {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
 
@@ -26,12 +28,20 @@ export async function signOutUser() {
   }
 }
 
-export async function signInUser(email: string, password: string) {
+export async function signInUser({
+  email,
+  password,
+}: AuthApiTypes): Promise<AuthResultType> {
   try {
     const res = await signInWithEmailAndPassword(auth, email, password);
 
-    return res;
+    return {
+      success: true,
+      data: res,
+    };
   } catch (error) {
-    console.error(error);
+    const api_error = error as { code: string; message: string };
+
+    return getSigninCodeError(api_error.code, api_error.code);
   }
 }

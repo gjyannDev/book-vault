@@ -13,6 +13,7 @@ export default function AuthForm({
   isSubmitting,
   formType,
 }: AuthFormProps) {
+  
   return (
     <div className="">
       <form

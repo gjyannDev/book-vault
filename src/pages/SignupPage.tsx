@@ -1,6 +1,6 @@
 import AuthForm from "@/components/auth/AuthForm";
 import { signInSchema } from "@/schemas/auth.schemas";
-import { createNewUser } from "@/services/api/auth/authApi";
+import { createNewUser } from "@/services/api/auth/auth.api";
 import type { TSignInSchema } from "@/types/bookTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
@@ -12,17 +12,22 @@ export default function SignupPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting},
+    formState: { errors, isSubmitting },
     reset,
+    setError,
   } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
   });
   const navigate = useNavigate();
 
   function onSubmit(data: TSignInSchema) {
-    createNewUser(data.email, data.password);
+    createNewUser({
+      email: data.email,
+      password: data.password,
+      setError: setError,
+    });
     reset();
-    navigate("/")
+    navigate("/");
   }
 
   return (
