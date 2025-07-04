@@ -1,7 +1,7 @@
 import AuthForm from "@/components/auth/AuthForm";
 import { signInSchema } from "@/schemas/auth.schemas";
 import { createNewUser } from "@/services/api/auth/auth.api";
-import type { TSignInSchema } from "@/types/bookTypes";
+import type { TSignInSchema } from "@/types/authTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
@@ -24,7 +24,6 @@ export default function SignupPage() {
     createNewUser({
       email: data.email,
       password: data.password,
-      setError: setError,
     });
     reset();
     navigate("/");

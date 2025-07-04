@@ -1,7 +1,7 @@
 import AuthForm from "@/components/auth/AuthForm";
 import { signInSchema } from "@/schemas/auth.schemas";
 import { signInUser } from "@/services/api/auth/auth.api";
-import type { TSignInSchema } from "@/types/bookTypes";
+import type { TSignInSchema } from "@/types/authTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
