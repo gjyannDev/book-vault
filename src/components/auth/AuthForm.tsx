@@ -2,7 +2,7 @@ import { errorHintText } from "@/components/shared/classNames";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { AuthFormProps } from "@/types/bookTypes";
+import type { AuthFormProps } from "@/types/authTypes";
 import clsx from "clsx";
 
 export default function AuthForm({
@@ -13,7 +13,7 @@ export default function AuthForm({
   isSubmitting,
   formType,
 }: AuthFormProps) {
-  
+
   return (
     <div className="">
       <form

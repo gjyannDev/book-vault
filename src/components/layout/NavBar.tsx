@@ -1,4 +1,4 @@
-import type { UserType } from "@/types/bookTypes";
+import type { UserType } from "@/types/authTypes";
 import { Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";

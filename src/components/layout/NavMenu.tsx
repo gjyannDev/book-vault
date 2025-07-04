@@ -16,7 +16,12 @@ export default function NavMenu() {
         <NavigationMenuList className="flex gap-7 text-[var(--text-white)]">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link to="/" className="hover:bg-transparent focus:bg-transparent active:bg-transparent">Home</Link>
+              <Link
+                to="/"
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Home
+              </Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
 
@@ -45,7 +50,7 @@ export default function NavMenu() {
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
                     <Link
-                        to="/books/Fiction"
+                      to="/books/Fiction"
                       className="text-[var(--primary-text)] hover:text-[var(--primary-clr)] hover:bg-transparent focus:bg-transparent active:bg-transparent"
                     >
                       Fiction
@@ -117,6 +122,16 @@ export default function NavMenu() {
                 </li>
               </ul>
             </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link
+                to="/"
+                className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
+              >
+                Favorites
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

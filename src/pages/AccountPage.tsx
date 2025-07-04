@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signOutUser } from "@/services/api/auth/auth.api";
-import type { AccountInfo } from "@/types/bookTypes";
+import type { AccountInfo } from "@/types/authTypes";
 import clsx from "clsx";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import noProfile from "../assets/images/no_profile.png";
