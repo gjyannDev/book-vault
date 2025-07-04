@@ -7,7 +7,6 @@ import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
-//TODO: Add validation in if the sign in is error
 export default function SigninPage() {
   const {
     register,
