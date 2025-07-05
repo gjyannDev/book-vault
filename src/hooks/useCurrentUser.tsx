@@ -15,9 +15,9 @@ export default function useCurrentUser() {
     return () => unsubscribe();
   }, []);
 
-
   return {
     user,
+    uid: user?.uid,
     loading,
   };
 }

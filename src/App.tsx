@@ -3,19 +3,21 @@ import { Outlet } from "react-router-dom";
 import NavBar from "./components/layout/NavBar";
 import CallToActionFooter from "./components/pages/CallToActionFooter";
 import Footer from "./components/pages/Footer";
-import { simplifiedAccountDetails } from "./lib/transformer";
-import type { AccountInfo } from "./types/authTypes";
 import useCurrentUser from "./hooks/useCurrentUser";
+import { simplifiedAccountDetails } from "./lib/transformer";
+import { addUserProfile } from "./services/api/auth/auth.api";
+import type { AccountInfo } from "./types/authTypes";
 
 function App() {
-  const { user } = useCurrentUser();
+  const { user, uid } = useCurrentUser();
   const [accountInfo, setAccountInfo] = useState<AccountInfo | null>(null);
 
   useEffect(() => {
-    if (user) {
+    if (user && uid) {
       setAccountInfo(simplifiedAccountDetails(user));
+      addUserProfile(uid);
     }
-  }, [user]);
+  }, [user, uid]);
 
   return (
     <>
