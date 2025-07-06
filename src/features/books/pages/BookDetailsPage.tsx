@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import FavoriteButton from "@/features/FavoriteButton";
 import type { BookInfo } from "@/types/bookTypes";
 import clsx from "clsx";
-import { ArrowLeft, Heart } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
@@ -65,13 +66,7 @@ export default function BookDetailsPage() {
                 <Button className="px-6 py-4 text-sm rounded-xs lg:px-8 lg:py-5 lg:text-md">
                   Add to cart
                 </Button>
-                <Heart
-                  className={clsx(
-                    "w-7 h-7 text-[var(--base-black)]",
-                    "md:w-8 md:h-8",
-                    "xl:w-9 xl:h-9"
-                  )}
-                />
+                <FavoriteButton variant="details" />
               </div>
             </div>
           </div>

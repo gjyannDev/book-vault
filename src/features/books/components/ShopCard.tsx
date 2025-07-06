@@ -6,6 +6,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import FavoriteButton from "@/features/FavoriteButton";
 import type { ShopCardProps } from "@/types/bookTypes";
 import clsx from "clsx";
 import { Heart, ShoppingCart } from "lucide-react";
@@ -115,12 +116,7 @@ export default function ShopCard({
                   <Button className="px-6 py-4 text-sm rounded-sm lg:px-3 lg:py-1 lg:text-xs">
                     Add to cart
                   </Button>
-                  <Button
-                    className="rounded-none text-sm px-3 py-1.5 lg:px-2 lg:py-1 lg:text-xs"
-                    variant="ghost"
-                  >
-                    Favorite
-                  </Button>
+                  <FavoriteButton variant="card" />
                 </>
               )}
             </CardFooter>
