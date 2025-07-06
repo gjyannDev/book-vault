@@ -1,5 +1,6 @@
 import { signInSchema } from "@/schemas/auth.schemas";
-import type { UserCredential, User} from "firebase/auth";
+import type { User, UserCredential } from "firebase/auth";
+import type { FieldValue } from "firebase/firestore";
 import type {
   FieldErrors,
   SubmitHandler,
@@ -43,14 +44,23 @@ export interface AuthApiTypes {
 }
 
 export interface AuthErrorType {
-  success: boolean;
+  success: false;
   field: "email" | "password" | "root";
   message: string;
 }
 
 export interface AuthSuccessType {
   success: true;
-  data: UserCredential
-};
+  data: UserCredential;
+  user: User;
+}
 
 export type AuthResultType = AuthSuccessType | AuthErrorType;
+
+export interface AuthCreateProfileParams {
+  uid: string;
+  name: string | null;
+  email: string | null;
+  createdAt: FieldValue;
+  avatarUrl: string | null;
+}
