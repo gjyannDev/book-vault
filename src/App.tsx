@@ -5,7 +5,6 @@ import CallToActionFooter from "./components/pages/CallToActionFooter";
 import Footer from "./components/pages/Footer";
 import useCurrentUser from "./hooks/useCurrentUser";
 import { simplifiedAccountDetails } from "./lib/transformer";
-import { addUserProfile } from "./services/api/auth/auth.api";
 import type { AccountInfo } from "./types/authTypes";
 
 function App() {
@@ -13,11 +12,12 @@ function App() {
   const [accountInfo, setAccountInfo] = useState<AccountInfo | null>(null);
 
   useEffect(() => {
-    if (user && uid) {
+    if (user) {
       setAccountInfo(simplifiedAccountDetails(user));
-      addUserProfile(uid);
     }
-  }, [user, uid]);
+  }, [user]);
+
+  console.log("uid in app.tsx: ", uid);
 
   return (
     <>

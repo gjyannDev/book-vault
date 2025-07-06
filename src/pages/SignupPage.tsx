@@ -1,9 +1,10 @@
 import AuthForm from "@/components/auth/AuthForm";
 import { signInSchema } from "@/schemas/auth.schemas";
-import { createNewUser } from "@/services/api/auth/auth.api";
+import { addUserProfile, createNewUser } from "@/services/api/auth/auth.api";
 import type { TSignInSchema } from "@/types/authTypes";
 import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
+import { serverTimestamp } from "firebase/firestore";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -25,14 +26,27 @@ export default function SignupPage() {
       password: data.password,
     });
 
-    if (!res.success) {
+    if (res.success === true) {
+      const params = {
+        uid: res.user.uid,
+        name: res.user.displayName,
+        email: res.user.email,
+        createdAt: serverTimestamp(),
+        avatarUrl: res.user.photoURL,
+      };
+
+      if (res.user?.uid) {
+        await addUserProfile(params);
+      }
+
+      reset();
+      navigate("/");
+    } else {
       setError(res.field, { type: "manual", message: res.message });
-      console.log(res.message);
       return;
     }
 
     reset();
-    navigate("/");
   }
 
   return (
