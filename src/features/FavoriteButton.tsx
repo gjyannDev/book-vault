@@ -1,16 +1,35 @@
 import { Button } from "@/components/ui/button";
+import useCurrentUser from "@/hooks/useCurrentUser";
+import { addFavorite } from "@/services/user/favorite.api";
 import type { FavoriteButtonProps } from "@/types/bookTypes";
 import clsx from "clsx";
 import { Heart } from "lucide-react";
 
 export default function FavoriteButton(params: FavoriteButtonProps) {
   const book = params.books.find((book) => book.id === params.bookId);
+  const { uid } = useCurrentUser();
 
-  function handleFavoriteClick(e: React.MouseEvent<HTMLElement>) {
+  async function handleFavoriteClick(e: React.MouseEvent<HTMLElement>) {
     e.stopPropagation();
-    alert("hello");
-    console.log(book);
+
+    if (!uid || !book?.id || !book.title) {
+      // Optionally show an error/toast here
+      return;
+    }
+
+    const params = {
+      userId: uid,
+      bookId: book?.id,
+      authors: book?.authors,
+      description: book?.description,
+      image: book?.image,
+      price: book?.price,
+      title: book?.title,
+    };
+
+    await addFavorite(params);
   }
+  
   return (
     <div className="">
       {params.variant === "card" ? (
