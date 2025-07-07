@@ -116,7 +116,7 @@ export default function ShopCard({
                   <Button className="px-6 py-4 text-sm rounded-sm lg:px-3 lg:py-1 lg:text-xs">
                     Add to cart
                   </Button>
-                  <FavoriteButton variant="card" />
+                  <FavoriteButton variant="card" books={bookInfo} bookId={detail.id}/>
                 </>
               )}
             </CardFooter>

@@ -66,7 +66,11 @@ export default function BookDetailsPage() {
                 <Button className="px-6 py-4 text-sm rounded-xs lg:px-8 lg:py-5 lg:text-md">
                   Add to cart
                 </Button>
-                <FavoriteButton variant="details" />
+                <FavoriteButton
+                  variant="details"
+                  books={get_books}
+                  bookId={id}
+                />
               </div>
             </div>
           </div>
