@@ -1,3 +1,4 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { Link } from "react-router-dom";
 import {
   NavigationMenu,
@@ -10,6 +11,8 @@ import {
 
 //TODO:Fix the color on the hover on the choice of the dropdown
 export default function NavMenu() {
+  const { user } = useCurrentUser();
+
   return (
     <div>
       <NavigationMenu viewport={false}>
@@ -123,10 +126,10 @@ export default function NavMenu() {
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
+          <NavigationMenuItem className={user ? "flex" : "hidden"}>
             <NavigationMenuLink asChild>
               <Link
-                to="/"
+                to="/favorite"
                 className="hover:bg-transparent focus:bg-transparent active:bg-transparent"
               >
                 Favorites
