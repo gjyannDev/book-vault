@@ -54,3 +54,19 @@ export interface MinMaxPriceRange {
   min: number;
   max: number;
 }
+
+export interface FavoriteButtonProps {
+  variant: "card" | "details";
+  books: BookInfo[];
+  bookId?: string;
+}
+
+export interface AddFavoriteProps {
+  userId: string;
+  bookId: string;
+  authors: string[];
+  description: string;
+  image: string;
+  price: string;
+  title: string;
+}
