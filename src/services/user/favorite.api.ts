@@ -1,10 +1,13 @@
-import type { AddFavoriteProps } from "@/types/bookTypes";
-import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
-import { db } from "../lib/firebase/fireBaseClient";
+import type { FavoriteProps } from "@/types/bookTypes";
+import { arrayRemove, arrayUnion, getDoc, updateDoc } from "firebase/firestore";
+import { getUserRef } from "../lib/firebase/fireBaseClient";
 
-export async function addFavorite(params: AddFavoriteProps) {
+export async function addFavorite(params: FavoriteProps) {
   try {
-    const ref = doc(db, "users", params.userId);
+    const ref = getUserRef();
+    if (!ref) {
+      throw new Error("User is not logged in.");
+    }
     const res = await updateDoc(ref, { favorites: arrayUnion(params) });
 
     return res;
@@ -13,13 +16,30 @@ export async function addFavorite(params: AddFavoriteProps) {
   }
 }
 
-export async function getFavorites(userId: string) {
+export async function getFavorites() {
   try {
-    const ref = doc(db, "users", userId);
+    const ref = getUserRef();
+    if (!ref) {
+      throw new Error("User is not logged in.");
+    }
     const res = await getDoc(ref);
     const data = res.data();
 
     return data?.favorites || [];
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function removeFavorite(data: FavoriteProps) {
+  try {
+    const ref = getUserRef();
+    if (!ref) {
+      throw new Error("User is not logged in.");
+    }
+    const res = await updateDoc(ref, { favorites: arrayRemove(data) });
+
+    return res;
   } catch (error) {
     console.error(error);
   }
