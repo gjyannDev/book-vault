@@ -17,19 +17,20 @@ export default function FavoriteButton(params: FavoriteButtonProps) {
       return;
     }
 
-    const params = {
+    const data = {
       userId: uid,
-      bookId: book?.id,
+      id: book?.id,
       authors: book?.authors,
       description: book?.description,
       image: book?.image,
       price: book?.price,
       title: book?.title,
+      category: params.category,
     };
 
-    await addFavorite(params);
+    await addFavorite(data);
   }
-  
+
   return (
     <div className="">
       {params.variant === "card" ? (
