@@ -1,15 +1,14 @@
 import SkeletonCard from "@/components/layout/SkeletonCard";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import CartButton from "@/features/CartButton";
 import FavoriteButton from "@/features/FavoriteButton";
 import type { ShopCardProps } from "@/types/bookTypes";
 import clsx from "clsx";
-import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function ShopCard({
@@ -87,10 +86,11 @@ export default function ShopCard({
                         </p>
                       </div>
                       <div className="flex gap-4">
-                        <ShoppingCart
-                          color="var(--base-black)"
-                          width={20}
-                          height={20}
+                        <CartButton
+                          buttonVariant="icon"
+                          books={bookInfo}
+                          bookId={detail.id}
+                          category={category}
                         />
                         <FavoriteButton
                           buttonVariant="favorite"
@@ -122,9 +122,12 @@ export default function ShopCard({
             >
               {(variant === "standard" || variant === "compact") && (
                 <>
-                  <Button className="px-6 py-4 text-sm rounded-sm lg:px-3 lg:py-1 lg:text-xs">
-                    Add to cart
-                  </Button>
+                  <CartButton
+                    buttonVariant="card"
+                    books={bookInfo}
+                    bookId={detail.id}
+                    category={category}
+                  />
                   <FavoriteButton
                     buttonVariant="card"
                     books={bookInfo}

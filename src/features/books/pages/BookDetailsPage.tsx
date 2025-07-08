@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import CartButton from "@/features/CartButton";
 import FavoriteButton from "@/features/FavoriteButton";
 import type { BookInfo } from "@/types/bookTypes";
 import clsx from "clsx";
@@ -64,9 +64,12 @@ export default function BookDetailsPage() {
             <div className="flex flex-col gap-2 md">
               <p className="md:text-lg">{`${books?.price} PHP`}</p>
               <div className="flex gap-4 items-center">
-                <Button className="px-6 py-4 text-sm rounded-xs lg:px-8 lg:py-5 lg:text-md">
-                  Add to cart
-                </Button>
+                <CartButton
+                  buttonVariant="details"
+                  books={get_books}
+                  bookId={id}
+                  category={category}
+                />
                 <FavoriteButton
                   buttonVariant="details"
                   books={get_books}
