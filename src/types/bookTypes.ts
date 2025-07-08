@@ -5,6 +5,7 @@ export interface BookInfo {
   title: string;
   description: string;
   authors: string[];
+  category: string;
 }
 
 export interface RawData {
@@ -40,9 +41,11 @@ export interface PaginationCard {
 
 export interface ShopCardProps {
   bookInfo: BookInfo[];
-  variant?: "standard" | "featured" | "compact";
-  isLoading: boolean;
-  category: string;
+  variant?: "standard" | "featured" | "compact" | "favorite";
+  isLoading?: boolean;
+  category?: string;
+  baseRoute?: string;
+  backRoute: string;
 }
 
 export interface BookFilter {
@@ -56,14 +59,16 @@ export interface MinMaxPriceRange {
 }
 
 export interface FavoriteButtonProps {
-  variant: "card" | "details";
+  buttonVariant: "card" | "details" | "favorite";
   books: BookInfo[];
   bookId?: string;
+  category?: string;
+  variant?: string;
 }
 
-export interface AddFavoriteProps {
+export interface FavoriteProps {
   userId: string;
-  bookId: string;
+  id: string;
   authors: string[];
   description: string;
   image: string;

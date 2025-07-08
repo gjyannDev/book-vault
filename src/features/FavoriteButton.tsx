@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { addFavorite } from "@/services/user/favorite.api";
+import { addFavorite, removeFavorite } from "@/services/user/favorite.api";
 import type { FavoriteButtonProps } from "@/types/bookTypes";
 import clsx from "clsx";
 import { Heart } from "lucide-react";
@@ -31,9 +31,37 @@ export default function FavoriteButton(params: FavoriteButtonProps) {
     await addFavorite(data);
   }
 
+  async function handleRemoveFavorite(
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) {
+    e.stopPropagation();
+
+    if (!uid || !book?.id || !book.title) {
+      // Optionally show an error/toast here
+      return;
+    }
+
+    const data = {
+      userId: uid,
+      id: book?.id,
+      authors: book?.authors,
+      description: book?.description,
+      image: book?.image,
+      price: book?.price,
+      title: book?.title,
+      category: params.category,
+    };
+
+    try {
+      await removeFavorite(data);
+    } catch (err) {
+      console.error("Failed to remove from Firestore", err);
+    }
+  }
+
   return (
     <div className="">
-      {params.variant === "card" ? (
+      {params.buttonVariant === "card" ? (
         <Button
           className="rounded-none text-sm px-3 py-1.5 lg:px-2 lg:py-1 lg:text-xs"
           variant="ghost"
@@ -41,6 +69,15 @@ export default function FavoriteButton(params: FavoriteButtonProps) {
         >
           Favorite
         </Button>
+      ) : params.buttonVariant === "favorite" ? (
+        <Heart
+          color="var(--base-black)"
+          width={20}
+          height={20}
+          fill={params.variant === "favorite" ? "#f75350" : ""}
+          stroke={params.variant === "favorite" ? "#f75350" : ""}
+          onClick={(e) => handleRemoveFavorite(e)}
+        />
       ) : (
         <Button variant="ghost" onClick={(e) => handleFavoriteClick(e)}>
           <Heart

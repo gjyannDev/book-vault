@@ -9,7 +9,7 @@ import {
 import FavoriteButton from "@/features/FavoriteButton";
 import type { ShopCardProps } from "@/types/bookTypes";
 import clsx from "clsx";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function ShopCard({
@@ -92,12 +92,12 @@ export default function ShopCard({
                           width={20}
                           height={20}
                         />
-                        <Heart
-                          color="var(--base-black)"
-                          width={20}
-                          height={20}
-                          fill={variant === "favorite" ? "#f75350" : ""}
-                          stroke={variant === "favorite" ? "#f75350" : ""}
+                        <FavoriteButton
+                          buttonVariant="favorite"
+                          books={bookInfo}
+                          bookId={detail.id}
+                          category={category}
+                          variant="favorite"
                         />
                       </div>
                     </div>
@@ -126,7 +126,7 @@ export default function ShopCard({
                     Add to cart
                   </Button>
                   <FavoriteButton
-                    variant="card"
+                    buttonVariant="card"
                     books={bookInfo}
                     bookId={detail.id}
                     category={category}

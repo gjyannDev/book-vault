@@ -20,7 +20,7 @@ export default function useFetchData(
       setIsLoading(true);
       try {
         if (uid) {
-          const get_fiction_books = await getFavorites(uid);
+          const get_fiction_books = await getFavorites();
           setFavoriteBooks(get_fiction_books || {});
         }
       } catch (error) {
@@ -53,5 +53,6 @@ export default function useFetchData(
     bookByCategory,
     totalItems,
     favoriteBooks,
+    setFavoriteBooks,
   };
 }

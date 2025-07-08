@@ -68,7 +68,7 @@ export default function BookDetailsPage() {
                   Add to cart
                 </Button>
                 <FavoriteButton
-                  variant="details"
+                  buttonVariant="details"
                   books={get_books}
                   bookId={id}
                   category={category}
