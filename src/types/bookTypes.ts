@@ -82,7 +82,6 @@ export interface CartProps {
   title: string;
   price: number;
   quantity: number;
-  addedAt: Date;
 }
 
 export interface CartButtonProps {
