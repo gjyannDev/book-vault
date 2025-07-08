@@ -2,10 +2,11 @@ import App from "./App";
 import BookDetailsPage from "./features/books/pages/BookDetailsPage";
 import BookListPage from "./features/books/pages/BookListPage";
 import AboutPage from "./pages/AboutPage";
+import AccountPage from "./pages/AccountPage";
+import FavoritePage from "./pages/FavoritePage";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
-import AccountPage from "./pages/AccountPage";
 
 const routes = [
   {
@@ -14,6 +15,7 @@ const routes = [
     children: [
       { index: true, element: <HomePage /> },
       { path: "about", element: <AboutPage /> },
+      { path: "favorite", element: <FavoritePage /> },
       { path: "signin", element: <SigninPage /> },
       { path: "signup", element: <SignupPage /> },
       { path: "account", element: <AccountPage /> },
@@ -22,6 +24,7 @@ const routes = [
       { path: "books/:Fiction", element: <BookListPage /> },
       { path: "books/:Nonfiction", element: <BookListPage /> },
       { path: "books/:category/:id", element: <BookDetailsPage /> },
+      { path: "favorite/:category/:id", element: <BookDetailsPage /> },
     ],
   },
 ];

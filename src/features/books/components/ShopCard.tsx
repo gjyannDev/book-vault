@@ -15,8 +15,10 @@ import { useNavigate } from "react-router-dom";
 export default function ShopCard({
   bookInfo,
   variant = "standard",
-  isLoading = true,
+  isLoading,
   category,
+  baseRoute,
+  backRoute,
 }: ShopCardProps) {
   const navigate = useNavigate();
 
@@ -33,8 +35,8 @@ export default function ShopCard({
               "bg-transparent border-none outline-none shadow-none rounded-none"
             )}
             onClick={() =>
-              navigate(`/books/${category}/${detail.id}`, {
-                state: { bookInfo, category },
+              navigate(`${baseRoute}/${category}/${detail.id}`, {
+                state: { bookInfo, category, backRoute },
               })
             }
           >
@@ -71,28 +73,35 @@ export default function ShopCard({
                 >
                   {detail.title}
                 </h1>
-                {variant === "featured" && (
-                  <div className="flex justify-between items-center">
-                    <div className="">
-                      <p
-                        className={clsx(
-                          "font-lora-regular text-primary text-base",
-                          "lg:text-sm"
-                        )}
-                      >
-                        {detail.price}
-                      </p>
+                {variant === "featured" ||
+                  (variant === "favorite" && (
+                    <div className="flex justify-between items-center">
+                      <div className="">
+                        <p
+                          className={clsx(
+                            "font-lora-regular text-primary text-base",
+                            "lg:text-sm"
+                          )}
+                        >
+                          {detail.price}
+                        </p>
+                      </div>
+                      <div className="flex gap-4">
+                        <ShoppingCart
+                          color="var(--base-black)"
+                          width={20}
+                          height={20}
+                        />
+                        <Heart
+                          color="var(--base-black)"
+                          width={20}
+                          height={20}
+                          fill={variant === "favorite" ? "#f75350" : ""}
+                          stroke={variant === "favorite" ? "#f75350" : ""}
+                        />
+                      </div>
                     </div>
-                    <div className="flex gap-4">
-                      <ShoppingCart
-                        color="var(--base-black)"
-                        width={20}
-                        height={20}
-                      />
-                      <Heart color="var(--base-black)" width={20} height={20} />
-                    </div>
-                  </div>
-                )}
+                  ))}
                 {variant === "standard" && (
                   <p
                     className={clsx(
@@ -116,7 +125,12 @@ export default function ShopCard({
                   <Button className="px-6 py-4 text-sm rounded-sm lg:px-3 lg:py-1 lg:text-xs">
                     Add to cart
                   </Button>
-                  <FavoriteButton variant="card" books={bookInfo} bookId={detail.id}/>
+                  <FavoriteButton
+                    variant="card"
+                    books={bookInfo}
+                    bookId={detail.id}
+                    category={category}
+                  />
                 </>
               )}
             </CardFooter>

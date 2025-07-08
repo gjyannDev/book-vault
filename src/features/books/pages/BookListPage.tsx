@@ -69,6 +69,8 @@ export default function BookListPage() {
               variant="compact"
               isLoading={isLoading}
               category={category}
+              backRoute={`/books/${category}`}
+              baseRoute="/books"
             />
             <PaginationCard
               totalItems={totalItems}

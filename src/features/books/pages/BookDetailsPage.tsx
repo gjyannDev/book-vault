@@ -10,6 +10,7 @@ export default function BookDetailsPage() {
   const { id } = useParams();
   const location = useLocation();
   const get_books = location.state?.bookInfo ?? [];
+  const back_route = location.state?.backRoute ?? "/";
   const category = location.state?.category ?? "Fiction";
   const books = get_books.find((book: BookInfo) => book.id === id);
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function BookDetailsPage() {
           "text-[var(--primary-text)]",
           "md:mb-6 lg:mb-8 xl:mb-10"
         )}
-        onClick={() => navigate(`/books/${category}`)}
+        onClick={() => navigate(`${back_route}`)}
       >
         <ArrowLeft className="w-6 h-6" />
         Back
@@ -70,6 +71,7 @@ export default function BookDetailsPage() {
                   variant="details"
                   books={get_books}
                   bookId={id}
+                  category={category}
                 />
               </div>
             </div>
