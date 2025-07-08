@@ -75,3 +75,20 @@ export interface FavoriteProps {
   price: string;
   title: string;
 }
+
+export interface CartProps {
+  id: string;
+  image: string;
+  title: string;
+  price: number;
+  quantity: number;
+  addedAt: Date;
+}
+
+export interface CartButtonProps {
+  buttonVariant: "card" | "details" | "favorite" | "icon";
+  books: BookInfo[];
+  bookId?: string;
+  category?: string;
+  variant?: string;
+}
