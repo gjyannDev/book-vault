@@ -24,7 +24,7 @@ export default function NavBar({ user }: UserType) {
               <Link to="">
                 <Search color="var(--base-white)" />
               </Link>
-              <Link to="">
+              <Link to="/cart">
                 <ShoppingCart color="var(--base-white)" />
               </Link>
               <Link to={user ? "/account" : "/signin"}>
