@@ -1,5 +1,5 @@
 import type { CartProps } from "@/types/bookTypes";
-import { arrayUnion, setDoc } from "firebase/firestore";
+import { arrayUnion, getDoc, setDoc } from "firebase/firestore";
 import { getUserRef } from "../lib/firebase/fireBaseClient";
 
 export async function addCart(params: CartProps) {
@@ -19,6 +19,21 @@ export async function addCart(params: CartProps) {
     );
 
     return res;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getCartsData() {
+  try {
+    const ref = getUserRef();
+    if (!ref) {
+      throw new Error("User is not logged in.");
+    }
+    const res = await getDoc(ref);
+    const data = res.data();
+
+    return data?.cart || [];
   } catch (error) {
     console.error(error);
   }

@@ -91,3 +91,7 @@ export interface CartButtonProps {
   category?: string;
   variant?: string;
 }
+
+export interface CartDetails {
+  book: CartProps[];
+}
