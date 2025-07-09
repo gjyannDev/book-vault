@@ -8,3 +8,8 @@ export const headerBase = clsx(
 export const errorHintText = clsx(
   "font-lora-regular text-sm text-destructive"
 )
+
+export const quantityCoutnerButton = clsx(
+  "h-6 w-6 p-0",
+  "md:h-8 md:w-8"
+)
