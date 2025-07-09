@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 export default function CartDetails({ book }: { book: BookInfo }) {
   return (
-    <div className="flex w-full gap-2">
+    <div className="flex w-full gap-2 lg:gap-3">
       <img
         src={book.image}
         className={clsx(
@@ -12,7 +12,7 @@ export default function CartDetails({ book }: { book: BookInfo }) {
           "lg:w-[8.75rem]"
         )}
       />
-      <div className="flex md:flex-row">
+      <div className="flex flex-col gap-2">
         <h3
           className={clsx(
             "font-playfair-bold text-sm break-words max-w-[8.75rem] whitespace-normal",
@@ -22,6 +22,7 @@ export default function CartDetails({ book }: { book: BookInfo }) {
         >
           {book.title}
         </h3>
+        <p className="font-lora-regular">{`₱ ${book.price}`}</p>
       </div>
     </div>
   );

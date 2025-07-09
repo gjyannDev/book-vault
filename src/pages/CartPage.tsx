@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -72,6 +73,20 @@ export default function CartPage() {
           ))}
         </TableBody>
       </Table>
+      <div
+        className={clsx(
+          "flex flex-col gap-6 items-start mt-12",
+          "md:items-end"
+        )}
+      >
+        <div className="flex gap-4">
+          <p className="font-lora-bold">Subtotal</p>
+          <p className="font-lora-regular">₱ 469.00 PHP</p>
+        </div>
+        <Button className={clsx("rounded-xs px-12 py-2", "md:px-18")}>
+          Checkout
+        </Button>
+      </div>
     </div>
   );
 }
