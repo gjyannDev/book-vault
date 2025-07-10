@@ -10,6 +10,6 @@ export const errorHintText = clsx(
 )
 
 export const quantityCoutnerButton = clsx(
-  "h-6 w-6 p-0",
+  "h-6 w-6 p-0 cursor-pointer",
   "md:h-8 md:w-8"
 )

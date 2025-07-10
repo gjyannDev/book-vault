@@ -27,6 +27,7 @@ export default function CartButton(params: CartButtonProps) {
       title: book?.title,
       price: price,
       quantity: 1,
+      total: price,
     };
 
     await addCart(data);

@@ -50,7 +50,7 @@ export default function CartPage() {
 
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Quantity</span>
-                    <CartQuanityCounter />
+                    <CartQuanityCounter book={book} />
                   </div>
 
                   <div className="flex justify-between">
@@ -64,7 +64,7 @@ export default function CartPage() {
                 <CartDetails book={book} />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">
-                <CartQuanityCounter />
+                <CartQuanityCounter book={book} />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">
                 ₱100
