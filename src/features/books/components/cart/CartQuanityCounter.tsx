@@ -7,17 +7,16 @@ import { useState } from "react";
 
 export default function CartQuanityCounter({ book }: { book: BookInfo }) {
   const [quantity, setQuantity] = useState<number>(1);
-  console.log(typeof book.price)
 
   async function handleIncrement(newQuantity: number) {
     setQuantity(newQuantity);
 
-    const updated_total = Number(book.price ) * quantity;
+    const updated_total = Number(book.price) * newQuantity;
 
     const data = {
       bookId: book.id,
       total: updated_total,
-      quantity: quantity,
+      quantity: newQuantity,
     };
 
     await updateCartData(data);
