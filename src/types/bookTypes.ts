@@ -92,6 +92,12 @@ export interface CartButtonProps {
   variant?: string;
 }
 
-export interface CartDetails {
+export interface CartBook {
   book: CartProps[];
+}
+
+export interface UpdateCartProps {
+  bookId: string;
+  total: number;
+  quantity: number;
 }
