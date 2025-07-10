@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { doc, getFirestore } from "firebase/firestore";
+import { collection, doc, getFirestore } from "firebase/firestore";
 
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -14,6 +14,18 @@ export const firebaseConfig = {
 export function getUserRef() {
   const user = auth.currentUser;
   return user ? doc(db, "users", user.uid) : null;
+}
+
+export function getCartRefDoc(bookId: string) {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+  return doc(db, "users", user.uid, "cart", bookId);
+}
+
+export function getCartRefCol() {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+  return collection(db, "users", user.uid, "cart");
 }
 
 const app = initializeApp(firebaseConfig);
