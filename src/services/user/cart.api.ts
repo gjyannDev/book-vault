@@ -1,4 +1,4 @@
-import type { BookInfo, CartProps, UpdateCartProps } from "@/types/bookTypes";
+import type { CartProps, UpdateCartProps } from "@/types/bookTypes";
 import { getDocs, setDoc } from "firebase/firestore";
 import { getCartRefCol, getCartRefDoc } from "../lib/firebase/fireBaseClient";
 
@@ -18,7 +18,7 @@ export async function addCart(params: CartProps) {
   }
 }
 
-export async function getCartsData(): Promise<BookInfo[]> {
+export async function getCartsData(): Promise<CartProps[]> {
   try {
     const ref = getCartRefCol();
     if (!ref) {
@@ -26,9 +26,9 @@ export async function getCartsData(): Promise<BookInfo[]> {
     }
     const res = await getDocs(ref);
 
-    const cartItems: BookInfo[] = res.docs.map((doc) => ({
+    const cartItems: CartProps[] = res.docs.map((doc) => ({
       id: doc.id,
-      ...(doc.data() as Omit<BookInfo, "id">),
+      ...(doc.data() as Omit<CartProps, "id">),
     }));
 
     return cartItems;
