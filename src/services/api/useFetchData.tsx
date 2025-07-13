@@ -1,5 +1,5 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
-import type { BookInfo, RawData } from "@/types/bookTypes";
+import type { BookInfo, FavoriteProps, RawData } from "@/types/bookTypes";
 import { useEffect, useState } from "react";
 import { getCartsData } from "../user/cart.api";
 import { getFavorites } from "../user/favorite.api";
@@ -8,10 +8,10 @@ import { getBookByCategory } from "./books/api";
 export default function useFetchData(
   category: string = "fiction",
   page: number = 0,
-  refetchKey?: number | string 
+  refetchKey?: number | string
 ) {
   const [bookByCategory, setBookByCategory] = useState<RawData[]>([]);
-  const [favoriteBooks, setFavoriteBooks] = useState<BookInfo[]>([]);
+  const [favoriteBooks, setFavoriteBooks] = useState<FavoriteProps[]>([]);
   const [cartBooks, setCartBooks] = useState<BookInfo[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [totalItems, setTotalItems] = useState<number>(0);

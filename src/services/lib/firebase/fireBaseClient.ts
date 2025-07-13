@@ -28,6 +28,18 @@ export function getCartRefCol() {
   return collection(db, "users", user.uid, "cart");
 }
 
+export function getFavRefDoc(bookId: string) {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+  return doc(db, "users", user.uid, "favorite", bookId);
+}
+
+export function getFavRefCol() {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+  return collection(db, "users", user.uid, "favorite");
+}
+
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
