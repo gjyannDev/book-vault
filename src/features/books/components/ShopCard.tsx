@@ -18,6 +18,7 @@ export default function ShopCard({
   category,
   baseRoute,
   backRoute,
+  onTriggerRefetch,
 }: ShopCardProps) {
   const navigate = useNavigate();
 
@@ -98,6 +99,7 @@ export default function ShopCard({
                           bookId={detail.id}
                           category={category}
                           variant="favorite"
+                          onTriggerFetch={onTriggerRefetch}
                         />
                       </div>
                     </div>
@@ -133,6 +135,7 @@ export default function ShopCard({
                     books={bookInfo}
                     bookId={detail.id}
                     category={category}
+                    onTriggerFetch={onTriggerRefetch}
                   />
                 </>
               )}

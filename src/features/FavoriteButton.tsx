@@ -54,6 +54,10 @@ export default function FavoriteButton(params: FavoriteButtonProps) {
 
     try {
       await removeFavorite(data);
+
+      if (params.onTriggerFetch) {
+        params.onTriggerFetch();
+      }
     } catch (err) {
       console.error("Failed to remove from Firestore", err);
     }

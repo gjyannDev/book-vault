@@ -46,6 +46,7 @@ export interface ShopCardProps {
   category?: string;
   baseRoute?: string;
   backRoute: string;
+  onTriggerRefetch: () => void;
 }
 
 export interface BookFilter {
@@ -64,6 +65,7 @@ export interface FavoriteButtonProps {
   bookId?: string;
   category?: string;
   variant?: string;
+  onTriggerFetch?: () => void;
 }
 
 export interface FavoriteProps {

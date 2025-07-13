@@ -7,7 +7,8 @@ import { getBookByCategory } from "./books/api";
 
 export default function useFetchData(
   category: string = "fiction",
-  page: number = 0
+  page: number = 0,
+  refetchKey?: number | string 
 ) {
   const [bookByCategory, setBookByCategory] = useState<RawData[]>([]);
   const [favoriteBooks, setFavoriteBooks] = useState<BookInfo[]>([]);
@@ -23,10 +24,10 @@ export default function useFetchData(
       try {
         if (uid) {
           const get_favorite_books = await getFavorites();
-          setFavoriteBooks(get_favorite_books || {});
+          setFavoriteBooks(get_favorite_books || []);
 
           const get_cart_books = await getCartsData();
-          setCartBooks(get_cart_books || {});
+          setCartBooks(get_cart_books || []);
         }
       } catch (error) {
         console.error("Error fetching data", error);
@@ -34,8 +35,9 @@ export default function useFetchData(
         setIsLoading(false);
       }
     }
+
     fetchData();
-  }, [uid]);
+  }, [uid, refetchKey]);
 
   useEffect(() => {
     async function fetchData() {
@@ -50,6 +52,7 @@ export default function useFetchData(
         setIsLoading(false);
       }
     }
+
     fetchData();
   }, [category, page]);
 
