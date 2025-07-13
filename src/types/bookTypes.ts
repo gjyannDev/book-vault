@@ -82,7 +82,6 @@ export interface CartProps {
   title: string;
   price: number;
   quantity: number;
-  total: number;
 }
 
 export interface CartButtonProps {
@@ -101,9 +100,4 @@ export interface UpdateCartProps {
   bookId: string;
   total: number;
   quantity: number;
-}
-
-export interface QuantityCounterProps {
-  book: CartProps;
-  setTotal: React.Dispatch<React.SetStateAction<number | undefined>>
 }
