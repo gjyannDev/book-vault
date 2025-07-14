@@ -1,5 +1,8 @@
-import type { CartProps, UpdateCartProps } from "@/types/bookTypes";
-import { getDocs, setDoc } from "firebase/firestore";
+import type {
+  CartProps,
+  UpdateCartProps,
+} from "@/types/bookTypes";
+import { deleteDoc, getDocs, setDoc } from "firebase/firestore";
 import { getCartRefCol, getCartRefDoc } from "../lib/firebase/fireBaseClient";
 
 export async function addCart(params: CartProps) {
@@ -41,7 +44,7 @@ export async function getCartsData(): Promise<CartProps[]> {
 export async function updateCartData(params: UpdateCartProps) {
   try {
     const ref = getCartRefDoc(params.bookId);
-    console.log("Ref path:", ref.path);
+
     const res = await setDoc(
       ref,
       {
@@ -50,6 +53,17 @@ export async function updateCartData(params: UpdateCartProps) {
       },
       { merge: true }
     );
+
+    return res;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function removeCartData(bookId: string) {
+  try {
+    const ref = getCartRefDoc(bookId);
+    const res = await deleteDoc(ref);
 
     return res;
   } catch (error) {

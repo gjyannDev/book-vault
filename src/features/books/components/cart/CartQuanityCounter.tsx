@@ -1,6 +1,7 @@
 import { quantityCoutnerButton } from "@/components/shared/classNames";
 import { Button } from "@/components/ui/button";
-import { updateCartData } from "@/services/user/cart.api";
+import { roundToTwoDecimals } from "@/lib/utils/utils";
+import { removeCartData, updateCartData } from "@/services/user/cart.api";
 import type { CartCounterProps } from "@/types/bookTypes";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -38,11 +39,16 @@ export default function CartQuanityCounter({
 
     const data = {
       bookId: book.id,
-      total: updated_total,
+      total: roundToTwoDecimals(updated_total),
       quantity: newQuantity,
     };
 
     await updateCartData(data);
+    onFetchTrigger();
+  }
+
+  async function removeCart() {
+    await removeCartData(book.id);
     onFetchTrigger();
   }
 
@@ -70,7 +76,7 @@ export default function CartQuanityCounter({
             <Plus />
           </Button>
         </div>
-        <Trash2 width={18} height={18} />
+        <Trash2 width={18} height={18} onClick={removeCart} />
       </div>
     </div>
   );

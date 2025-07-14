@@ -16,6 +16,7 @@ import { useState } from "react";
 export default function CartPage() {
   const [refetchKey, setRefetchKey] = useState<number>(0);
   const { cartBooks, isLoading } = useFetchData(undefined, 0, refetchKey);
+  const sub_total = cartBooks.reduce((acc, curr) => (acc += curr.total), 0);
 
   return (
     <div className="my-8 lg:my-10 xl:my-12">
@@ -90,7 +91,7 @@ export default function CartPage() {
       >
         <div className="flex gap-4">
           <p className="font-lora-bold">Subtotal</p>
-          <p className="font-lora-regular">₱ 469.00 PHP</p>
+          <p className="font-lora-regular">{sub_total.toFixed(2)}</p>
         </div>
         <Button className={clsx("rounded-xs px-12 py-2", "md:px-18")}>
           Checkout
