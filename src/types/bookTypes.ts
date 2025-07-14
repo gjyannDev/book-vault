@@ -84,6 +84,7 @@ export interface CartProps {
   title: string;
   price: number;
   quantity: number;
+  total: number;
 }
 
 export interface CartButtonProps {

@@ -1,12 +1,22 @@
 import { quantityCoutnerButton } from "@/components/shared/classNames";
 import { Button } from "@/components/ui/button";
 import { updateCartData } from "@/services/user/cart.api";
-import type { BookInfo } from "@/types/bookTypes";
+import type { CartProps } from "@/types/bookTypes";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function CartQuanityCounter({ book }: { book: BookInfo }) {
+export default function CartQuanityCounter({
+  book,
+  onFetchTrigger,
+}: {
+  book: CartProps;
+  onFetchTrigger: () => void;
+}) {
   const [quantity, setQuantity] = useState<number>(1);
+
+  useEffect(() => {
+    setQuantity(book.quantity);
+  }, [book.quantity]);
 
   async function handleIncrement(newQuantity: number) {
     setQuantity(newQuantity);
@@ -20,6 +30,7 @@ export default function CartQuanityCounter({ book }: { book: BookInfo }) {
     };
 
     await updateCartData(data);
+    onFetchTrigger();
   }
 
   return (

@@ -11,11 +11,12 @@ import CartDetails from "@/features/books/components/cart/CartDetails";
 import CartQuanityCounter from "@/features/books/components/cart/CartQuanityCounter";
 import useFetchData from "@/services/api/useFetchData";
 import clsx from "clsx";
+import { useState } from "react";
 
 export default function CartPage() {
-  const { cartBooks } = useFetchData();
+  const [refetchKey, setRefetchKey] = useState<number>(0);
+  const { cartBooks } = useFetchData(undefined, 0, refetchKey);
 
-  console.log(cartBooks);
   return (
     <div className="my-8 lg:my-10 xl:my-12">
       <h1
@@ -50,7 +51,10 @@ export default function CartPage() {
 
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Quantity</span>
-                    <CartQuanityCounter book={book} />
+                    <CartQuanityCounter
+                      book={book}
+                      onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
+                    />
                   </div>
 
                   <div className="flex justify-between">
@@ -64,10 +68,13 @@ export default function CartPage() {
                 <CartDetails book={book} />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">
-                <CartQuanityCounter book={book} />
+                <CartQuanityCounter
+                  book={book}
+                  onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
+                />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">
-                ₱100
+                {book.total}
               </TableCell>
             </TableRow>
           ))}

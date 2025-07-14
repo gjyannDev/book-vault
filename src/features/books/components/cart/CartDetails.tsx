@@ -1,7 +1,7 @@
-import type { BookInfo } from "@/types/bookTypes";
+import type { CartProps } from "@/types/bookTypes";
 import clsx from "clsx";
 
-export default function CartDetails({ book }: { book: BookInfo }) {
+export default function CartDetails({ book }: { book: CartProps }) {
   return (
     <div className="flex w-full gap-2 lg:gap-3">
       <img
