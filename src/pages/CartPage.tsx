@@ -15,7 +15,7 @@ import { useState } from "react";
 
 export default function CartPage() {
   const [refetchKey, setRefetchKey] = useState<number>(0);
-  const { cartBooks } = useFetchData(undefined, 0, refetchKey);
+  const { cartBooks, isLoading } = useFetchData(undefined, 0, refetchKey);
 
   return (
     <div className="my-8 lg:my-10 xl:my-12">
@@ -54,12 +54,13 @@ export default function CartPage() {
                     <CartQuanityCounter
                       book={book}
                       onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
+                      isLoading={isLoading}
                     />
                   </div>
 
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Total</span>
-                    <span>₱100</span>
+                    {`₱${book.total}`}
                   </div>
                 </div>
               </TableCell>
@@ -71,10 +72,11 @@ export default function CartPage() {
                 <CartQuanityCounter
                   book={book}
                   onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
+                  isLoading={isLoading}
                 />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">
-                {book.total}
+                {`₱${book.total}`}
               </TableCell>
             </TableRow>
           ))}

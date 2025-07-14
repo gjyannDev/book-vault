@@ -1,17 +1,15 @@
 import { quantityCoutnerButton } from "@/components/shared/classNames";
 import { Button } from "@/components/ui/button";
 import { updateCartData } from "@/services/user/cart.api";
-import type { CartProps } from "@/types/bookTypes";
+import type { CartCounterProps } from "@/types/bookTypes";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function CartQuanityCounter({
   book,
   onFetchTrigger,
-}: {
-  book: CartProps;
-  onFetchTrigger: () => void;
-}) {
+  isLoading,
+}: CartCounterProps) {
   const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
@@ -33,11 +31,32 @@ export default function CartQuanityCounter({
     onFetchTrigger();
   }
 
+  async function handleDecrement(newQuantity: number) {
+    setQuantity(newQuantity);
+
+    const updated_total = Number(book.price) * newQuantity;
+
+    const data = {
+      bookId: book.id,
+      total: updated_total,
+      quantity: newQuantity,
+    };
+
+    await updateCartData(data);
+    onFetchTrigger();
+  }
+
   return (
     <div className="">
       <div className="flex items-center gap-2">
         <div className="inline-flex items-center gap-4 border px-2 py-1 rounded cursor-pointer">
-          <Button variant="ghost" size="icon" className={quantityCoutnerButton}>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={quantityCoutnerButton}
+            onClick={() => handleDecrement(Math.max(quantity - 1, 1))}
+            disabled={isLoading}
+          >
             <Minus className="" />
           </Button>
           <span>{quantity}</span>
@@ -46,6 +65,7 @@ export default function CartQuanityCounter({
             size="icon"
             className={quantityCoutnerButton}
             onClick={() => handleIncrement(quantity + 1)}
+            disabled={isLoading}
           >
             <Plus />
           </Button>
