@@ -13,7 +13,7 @@ export default function FavoriteButton(params: FavoriteButtonProps) {
     e.stopPropagation();
 
     if (!uid || !book?.id || !book.title) {
-      // Optionally show an error/toast here
+      params.setShowDialog(true);
       return;
     }
 
@@ -37,7 +37,7 @@ export default function FavoriteButton(params: FavoriteButtonProps) {
     e.stopPropagation();
 
     if (!uid || !book?.id || !book.title) {
-      // Optionally show an error/toast here
+      params.setShowDialog(false);
       return;
     }
 

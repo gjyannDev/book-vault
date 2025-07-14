@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import AuthSignupDialog from "../components/modals/AuthSignupDialog";
 
 export default function BookDetailsPage() {
   const { id } = useParams();
@@ -16,6 +17,7 @@ export default function BookDetailsPage() {
   const books = get_books.find((book: BookInfo) => book.id === id);
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
+  const [showDialog, setShowDialog] = useState<boolean>(false);
 
   return (
     <div
@@ -24,6 +26,12 @@ export default function BookDetailsPage() {
         "md:my-6 lg:my-8 xl:my-10"
       )}
     >
+      {
+        <AuthSignupDialog
+          open={showDialog}
+          onClose={() => setShowDialog(false)}
+        />
+      }
       <div
         className={clsx(
           "flex items-center gap-2 self-start mb-4 cursor-pointer",
@@ -71,12 +79,14 @@ export default function BookDetailsPage() {
                   bookId={id}
                   category={category}
                   cartBooks={get_cart_books}
+                  setShowDialog={setShowDialog}
                 />
                 <FavoriteButton
                   buttonVariant="details"
                   books={get_books}
                   bookId={id}
                   category={category}
+                  setShowDialog={setShowDialog}
                 />
               </div>
             </div>

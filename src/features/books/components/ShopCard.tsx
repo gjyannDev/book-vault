@@ -9,7 +9,9 @@ import CartButton from "@/features/CartButton";
 import FavoriteButton from "@/features/FavoriteButton";
 import type { ShopCardProps } from "@/types/bookTypes";
 import clsx from "clsx";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthSignupDialog from "./modals/AuthSignupDialog";
 
 export default function ShopCard({
   bookInfo,
@@ -22,9 +24,16 @@ export default function ShopCard({
   cartBooks,
 }: ShopCardProps) {
   const navigate = useNavigate();
+  const [showDialog, setShowDialog] = useState<boolean>(false);
 
   return (
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+      {
+        <AuthSignupDialog
+          open={showDialog}
+          onClose={() => setShowDialog(false)}
+        />
+      }
       {bookInfo.map((detail, idx) =>
         isLoading ? (
           Array.from({ length: 1 }).map((_, i) => <SkeletonCard idx={i} />)
@@ -94,6 +103,7 @@ export default function ShopCard({
                           bookId={detail.id}
                           category={category}
                           cartBooks={cartBooks}
+                          setShowDialog={setShowDialog}
                         />
                         <FavoriteButton
                           buttonVariant="favorite"
@@ -102,6 +112,7 @@ export default function ShopCard({
                           category={category}
                           variant="favorite"
                           onTriggerFetch={onTriggerRefetch}
+                          setShowDialog={setShowDialog}
                         />
                       </div>
                     </div>
@@ -132,6 +143,7 @@ export default function ShopCard({
                     bookId={detail.id}
                     category={category}
                     cartBooks={cartBooks}
+                    setShowDialog={setShowDialog}
                   />
                   <FavoriteButton
                     buttonVariant="card"
@@ -139,6 +151,7 @@ export default function ShopCard({
                     bookId={detail.id}
                     category={category}
                     onTriggerFetch={onTriggerRefetch}
+                    setShowDialog={setShowDialog}
                   />
                 </>
               )}

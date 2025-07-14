@@ -21,7 +21,7 @@ export default function CartButton(params: CartButtonProps) {
     e.stopPropagation();
 
     if (!uid || !book?.id || !book.title) {
-      // Optionally show an error/toast here
+      params.setShowDialog(true);
       return;
     }
 

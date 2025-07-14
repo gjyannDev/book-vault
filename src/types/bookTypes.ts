@@ -67,6 +67,7 @@ export interface FavoriteButtonProps {
   category?: string;
   variant?: string;
   onTriggerFetch?: () => void;
+  setShowDialog: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface FavoriteProps {
@@ -95,6 +96,7 @@ export interface CartButtonProps {
   category?: string;
   variant?: string;
   cartBooks?: CartProps[];
+  setShowDialog: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface CartBook {
@@ -118,4 +120,9 @@ export interface CartCounterProps {
   book: CartProps;
   onFetchTrigger: () => void;
   isLoading: boolean;
+}
+
+export interface AuthSignupDialogProps {
+  open: boolean;
+  onClose: () => void;
 }
