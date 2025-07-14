@@ -1,5 +1,5 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
-import type { BookInfo, FavoriteProps, RawData } from "@/types/bookTypes";
+import type { CartProps, FavoriteProps, RawData } from "@/types/bookTypes";
 import { useEffect, useState } from "react";
 import { getCartsData } from "../user/cart.api";
 import { getFavorites } from "../user/favorite.api";
@@ -12,7 +12,7 @@ export default function useFetchData(
 ) {
   const [bookByCategory, setBookByCategory] = useState<RawData[]>([]);
   const [favoriteBooks, setFavoriteBooks] = useState<FavoriteProps[]>([]);
-  const [cartBooks, setCartBooks] = useState<BookInfo[]>([]);
+  const [cartBooks, setCartBooks] = useState<CartProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [totalItems, setTotalItems] = useState<number>(0);
 
