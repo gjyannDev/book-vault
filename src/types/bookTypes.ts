@@ -111,3 +111,9 @@ export interface EmptyStateProps {
   actionText: string;
   onActionClick: () => void;
 }
+
+export interface CartCounterProps {
+  book: CartProps;
+  onFetchTrigger: () => void;
+  isLoading: boolean;
+}
