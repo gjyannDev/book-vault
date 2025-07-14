@@ -10,6 +10,8 @@ export default function CartQuanityCounter({
   book,
   onFetchTrigger,
   isLoading,
+  allQuantity,
+  setCartItemCount,
 }: CartCounterProps) {
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -29,6 +31,7 @@ export default function CartQuanityCounter({
     };
 
     await updateCartData(data);
+    setCartItemCount(allQuantity);
     onFetchTrigger();
   }
 

@@ -11,12 +11,24 @@ import CartDetails from "@/features/books/components/cart/CartDetails";
 import CartQuanityCounter from "@/features/books/components/cart/CartQuanityCounter";
 import useFetchData from "@/services/api/useFetchData";
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 export default function CartPage() {
   const [refetchKey, setRefetchKey] = useState<number>(0);
   const { cartBooks, isLoading } = useFetchData(undefined, 0, refetchKey);
   const sub_total = cartBooks.reduce((acc, curr) => (acc += curr.total), 0);
+  const all_quantity = cartBooks.reduce(
+    (acc, curr) => (acc += curr.quantity),
+    0
+  );
+  const { setCartItemCount } = useOutletContext<{
+    setCartItemCount: React.Dispatch<React.SetStateAction<number>>;
+  }>();
+
+  useEffect(() => {
+    setCartItemCount(all_quantity);
+  }, [all_quantity, setCartItemCount]);
 
   return (
     <div className="my-8 lg:my-10 xl:my-12">
@@ -56,6 +68,8 @@ export default function CartPage() {
                       book={book}
                       onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
                       isLoading={isLoading}
+                      setCartItemCount={setCartItemCount}
+                      allQuantity={all_quantity}
                     />
                   </div>
 
@@ -74,6 +88,8 @@ export default function CartPage() {
                   book={book}
                   onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
                   isLoading={isLoading}
+                  setCartItemCount={setCartItemCount}
+                  allQuantity={all_quantity}
                 />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">

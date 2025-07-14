@@ -20,8 +20,9 @@ export interface AuthFormProps {
   formType: string;
 }
 
-export interface UserType {
+export interface NavBarProps {
   user: User | null;
+  cartItemCount: number;
 }
 
 export interface AccountInfo {

@@ -116,4 +116,6 @@ export interface CartCounterProps {
   book: CartProps;
   onFetchTrigger: () => void;
   isLoading: boolean;
+  allQuantity: number;
+  setCartItemCount: React.Dispatch<React.SetStateAction<number>>;
 }

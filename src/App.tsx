@@ -10,18 +10,18 @@ import type { AccountInfo } from "./types/authTypes";
 function App() {
   const { user } = useCurrentUser();
   const [accountInfo, setAccountInfo] = useState<AccountInfo | null>(null);
+  const [cartItemCount, setCartItemCount] = useState<number>(0);
 
   useEffect(() => {
     if (user) {
       setAccountInfo(simplifiedAccountDetails(user));
     }
   }, [user]);
-
   return (
     <>
-      <NavBar user={user} />
+      <NavBar user={user} cartItemCount={cartItemCount} />
       <div className="container flex flex-col gap-24 mx-auto px-4 sm:px-8 lg:px-14 text-[var(--primary-text)]">
-        <Outlet context={{ accountInfo }} />
+        <Outlet context={{ accountInfo, setCartItemCount }} />
       </div>
       <CallToActionFooter />
       <Footer />
