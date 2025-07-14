@@ -46,7 +46,7 @@ export interface ShopCardProps {
   category?: string;
   baseRoute?: string;
   backRoute: string;
-  onTriggerRefetch: () => void;
+  onTriggerRefetch?: () => void;
 }
 
 export interface BookFilter {
@@ -102,4 +102,11 @@ export interface UpdateCartProps {
   bookId: string;
   total: number;
   quantity: number;
+}
+
+export interface EmptyStateProps {
+  title: string;
+  message: string;
+  actionText: string;
+  onActionClick: () => void;
 }

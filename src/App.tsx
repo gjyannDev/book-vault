@@ -8,7 +8,7 @@ import { simplifiedAccountDetails } from "./lib/transformer";
 import type { AccountInfo } from "./types/authTypes";
 
 function App() {
-  const { user, uid } = useCurrentUser();
+  const { user } = useCurrentUser();
   const [accountInfo, setAccountInfo] = useState<AccountInfo | null>(null);
 
   useEffect(() => {
@@ -16,8 +16,6 @@ function App() {
       setAccountInfo(simplifiedAccountDetails(user));
     }
   }, [user]);
-
-  console.log("uid in app.tsx: ", uid);
 
   return (
     <>

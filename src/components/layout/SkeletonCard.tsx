@@ -1,6 +1,6 @@
 import { Skeleton } from "../ui/skeleton";
 
-export default function SkeletonCard({ idx }: { idx: number }) {
+export default function SkeletonCard({ idx }: { idx?: number }) {
   return (
     <div key={idx} className="w-full max-w-md space-y-3 pt-6 py-6">
       <Skeleton className="w-full h-96 lg:h-72 bg-gray-300 animate-pulse rounded" />

@@ -1,5 +1,6 @@
 import BookFilter from "@/components/filters/BookFilter";
 import PaginationCard from "@/components/layout/PaginationCard";
+import SkeletonCard from "@/components/layout/SkeletonCard";
 import { simplifiedGoogleBooks } from "@/lib/transformer";
 import useFetchData from "@/services/api/useFetchData";
 import type { BookInfo } from "@/types/bookTypes";
@@ -58,20 +59,28 @@ export default function BookListPage() {
             exercitationem officia sequi mollitia doloribus veritatis nemo nisi.
             Nesciunt, cumque consectetur.
           </p>
-        </div>
+        </div>  
         <div className="flex flex-col gap-4">
           <div className="flex items-center">
             <BookFilter setBooks={setBooks} books={originalBooks} />
           </div>
           <div className="">
-            <ShopCard
-              bookInfo={books}
-              variant="compact"
-              isLoading={isLoading}
-              category={category}
-              backRoute={`/books/${category}`}
-              baseRoute="/books"
-            />
+            {isLoading ? (
+              <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                {Array.from({ length: 16 }).map((_, index) => (
+                  <SkeletonCard key={index} />
+                ))}
+              </div>
+            ) : (
+              <ShopCard
+                bookInfo={books}
+                variant="compact"
+                isLoading={isLoading}
+                category={category}
+                backRoute={`/books/${category}`}
+                baseRoute="/books"
+              />
+            )}
             <PaginationCard
               totalItems={totalItems}
               page={page}
