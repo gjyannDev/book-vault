@@ -12,7 +12,8 @@ import CartQuanityCounter from "@/features/books/components/cart/CartQuanityCoun
 import useFetchData from "@/services/api/useFetchData";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import EmptyState from "./EmptyState";
 
 export default function CartPage() {
   const [refetchKey, setRefetchKey] = useState<number>(0);
@@ -25,6 +26,7 @@ export default function CartPage() {
   const { setCartItemCount } = useOutletContext<{
     setCartItemCount: React.Dispatch<React.SetStateAction<number>>;
   }>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCartItemCount(all_quantity);
@@ -32,83 +34,96 @@ export default function CartPage() {
 
   return (
     <div className="my-8 lg:my-10 xl:my-12">
-      <h1
-        className={clsx(
-          "font-playfair-bold text-3xl",
-          "lg:text-4xl",
-          "xl:text-5xl"
-        )}
-      >
-        Your Cart
-      </h1>
-      <Table className="">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[372px] text-[#dbd2ce] md:w-[380px] lg:w-[524px]">
-              Product
-            </TableHead>
-            <TableHead className="hidden md:table-cell text-[#dbd2ce]">
-              Quantity
-            </TableHead>
-            <TableHead className="hidden md:table-cell text-[#dbd2ce]">
-              Total
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {cartBooks.map((book) => (
-            <TableRow>
-              <TableCell colSpan={3} className="block md:hidden py-6">
-                <div className="flex flex-col gap-4">
-                  <CartDetails book={book} />
+      {cartBooks.length === 0 ? (
+        <EmptyState
+          title="Your cart is empty"
+          message="Looks like you haven't added any books to your cart."
+          actionText="Continue Shopping"
+          onActionClick={() => navigate("/books/Fiction")}
+        />
+      ) : (
+        <>
+          <h1
+            className={clsx(
+              "font-playfair-bold text-3xl",
+              "lg:text-4xl",
+              "xl:text-5xl"
+            )}
+          >
+            Your Cart
+          </h1>
+          <Table className="">
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[372px] text-[#dbd2ce] md:w-[380px] lg:w-[524px]">
+                  Product
+                </TableHead>
+                <TableHead className="hidden md:table-cell text-[#dbd2ce]">
+                  Quantity
+                </TableHead>
+                <TableHead className="hidden md:table-cell text-[#dbd2ce]">
+                  Total
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {cartBooks.map((book) => (
+                <TableRow>
+                  <TableCell colSpan={3} className="block md:hidden py-6">
+                    <div className="flex flex-col gap-4">
+                      <CartDetails book={book} />
 
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Quantity</span>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Quantity</span>
+                        <CartQuanityCounter
+                          book={book}
+                          onFetchTrigger={() =>
+                            setRefetchKey((prev) => prev + 1)
+                          }
+                          isLoading={isLoading}
+                        />
+                      </div>
+
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Total</span>
+                        {`₱${book.total}`}
+                      </div>
+                    </div>
+                  </TableCell>
+
+                  <TableCell className="hidden md:flex align-top py-6">
+                    <CartDetails book={book} />
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell align-top py-6">
                     <CartQuanityCounter
                       book={book}
                       onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
                       isLoading={isLoading}
                     />
-                  </div>
-
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Total</span>
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell align-top py-6">
                     {`₱${book.total}`}
-                  </div>
-                </div>
-              </TableCell>
-
-              <TableCell className="hidden md:flex align-top py-6">
-                <CartDetails book={book} />
-              </TableCell>
-              <TableCell className="hidden md:table-cell align-top py-6">
-                <CartQuanityCounter
-                  book={book}
-                  onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
-                  isLoading={isLoading}
-                />
-              </TableCell>
-              <TableCell className="hidden md:table-cell align-top py-6">
-                {`₱${book.total}`}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <div
-        className={clsx(
-          "flex flex-col gap-6 items-start mt-12",
-          "md:items-end"
-        )}
-      >
-        <div className="flex gap-4">
-          <p className="font-lora-bold">Subtotal</p>
-          <p className="font-lora-regular">{sub_total.toFixed(2)}</p>
-        </div>
-        <Button className={clsx("rounded-xs px-12 py-2", "md:px-18")}>
-          Checkout
-        </Button>
-      </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <div
+            className={clsx(
+              "flex flex-col gap-6 items-start mt-12",
+              "md:items-end"
+            )}
+          >
+            <div className="flex gap-4">
+              <p className="font-lora-bold">Subtotal</p>
+              <p className="font-lora-regular">{sub_total.toFixed(2)}</p>
+            </div>
+            <Button className={clsx("rounded-xs px-12 py-2", "md:px-18")}>
+              Checkout
+            </Button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function FavoritePage() {
             <SkeletonCard key={index} />
           ))}
         </div>
-      ) : !isLoading && favoriteBooks.length === 0 ? (
+      ) : favoriteBooks.length === 0 ? (
         <EmptyState
           title="No favorites yet"
           message="Looks like you haven't added any books to your favorites. Tap the heart icon on books you love to save them here."
