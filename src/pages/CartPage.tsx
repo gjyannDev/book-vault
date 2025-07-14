@@ -68,8 +68,6 @@ export default function CartPage() {
                       book={book}
                       onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
                       isLoading={isLoading}
-                      setCartItemCount={setCartItemCount}
-                      allQuantity={all_quantity}
                     />
                   </div>
 
@@ -88,8 +86,6 @@ export default function CartPage() {
                   book={book}
                   onFetchTrigger={() => setRefetchKey((prev) => prev + 1)}
                   isLoading={isLoading}
-                  setCartItemCount={setCartItemCount}
-                  allQuantity={all_quantity}
                 />
               </TableCell>
               <TableCell className="hidden md:table-cell align-top py-6">

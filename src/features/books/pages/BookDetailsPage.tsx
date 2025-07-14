@@ -10,6 +10,7 @@ export default function BookDetailsPage() {
   const { id } = useParams();
   const location = useLocation();
   const get_books = location.state?.bookInfo ?? [];
+  const get_cart_books = location.state?.cartBooks ?? [];
   const back_route = location.state?.backRoute ?? "/";
   const category = location.state?.category ?? "Fiction";
   const books = get_books.find((book: BookInfo) => book.id === id);
@@ -69,6 +70,7 @@ export default function BookDetailsPage() {
                   books={get_books}
                   bookId={id}
                   category={category}
+                  cartBooks={get_cart_books}
                 />
                 <FavoriteButton
                   buttonVariant="details"

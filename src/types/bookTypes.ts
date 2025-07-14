@@ -47,6 +47,7 @@ export interface ShopCardProps {
   baseRoute?: string;
   backRoute: string;
   onTriggerRefetch?: () => void;
+  cartBooks?: CartProps[];
 }
 
 export interface BookFilter {
@@ -93,6 +94,7 @@ export interface CartButtonProps {
   bookId?: string;
   category?: string;
   variant?: string;
+  cartBooks?: CartProps[];
 }
 
 export interface CartBook {
@@ -116,6 +118,4 @@ export interface CartCounterProps {
   book: CartProps;
   onFetchTrigger: () => void;
   isLoading: boolean;
-  allQuantity: number;
-  setCartItemCount: React.Dispatch<React.SetStateAction<number>>;
 }

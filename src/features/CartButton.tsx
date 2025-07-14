@@ -3,11 +3,15 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { addCart } from "@/services/user/cart.api";
 import type { CartButtonProps } from "@/types/bookTypes";
 import { ShoppingCart } from "lucide-react";
+import { useOutletContext } from "react-router-dom";
 
 export default function CartButton(params: CartButtonProps) {
   const book = params.books.find((book) => book.id === params.bookId);
   const { uid } = useCurrentUser();
   const price = Number(book?.price.slice(1));
+  const { setCartItemCount } = useOutletContext<{
+    setCartItemCount: React.Dispatch<React.SetStateAction<number>>;
+  }>();
 
   async function handleAddCart(
     e:
@@ -31,6 +35,7 @@ export default function CartButton(params: CartButtonProps) {
     };
 
     await addCart(data);
+    setCartItemCount((prev) => prev + 1);
   }
 
   return (

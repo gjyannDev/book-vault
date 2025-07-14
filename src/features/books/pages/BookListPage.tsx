@@ -14,7 +14,7 @@ export default function BookListPage() {
   const category = all ?? "Fiction";
   const [page, setPage] = useState(0);
   const max_result = 16;
-  const { bookByCategory, isLoading, totalItems } = useFetchData(
+  const { bookByCategory, isLoading, totalItems, cartBooks } = useFetchData(
     all,
     page * max_result
   );
@@ -59,7 +59,7 @@ export default function BookListPage() {
             exercitationem officia sequi mollitia doloribus veritatis nemo nisi.
             Nesciunt, cumque consectetur.
           </p>
-        </div>  
+        </div>
         <div className="flex flex-col gap-4">
           <div className="flex items-center">
             <BookFilter setBooks={setBooks} books={originalBooks} />
@@ -79,6 +79,7 @@ export default function BookListPage() {
                 category={category}
                 backRoute={`/books/${category}`}
                 baseRoute="/books"
+                cartBooks={cartBooks}
               />
             )}
             <PaginationCard

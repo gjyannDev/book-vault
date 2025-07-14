@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 
 export default function NavBar({ user, cartItemCount }: NavBarProps) {
-  console.log(cartItemCount);
   return (
     <div className="w-full bg-[var(--bg-dark)]">
       <div className="container mx-auto px-4 sm:px-8 lg:px-14 xl:px-16 py-6">

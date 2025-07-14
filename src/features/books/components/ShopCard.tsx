@@ -19,6 +19,7 @@ export default function ShopCard({
   baseRoute,
   backRoute,
   onTriggerRefetch,
+  cartBooks,
 }: ShopCardProps) {
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function ShopCard({
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
       {bookInfo.map((detail, idx) =>
         isLoading ? (
-          <SkeletonCard idx={idx} />
+          Array.from({ length: 1 }).map((_, i) => <SkeletonCard idx={i} />)
         ) : (
           <Card
             key={idx}
@@ -36,7 +37,7 @@ export default function ShopCard({
             )}
             onClick={() =>
               navigate(`${baseRoute}/${category}/${detail.id}`, {
-                state: { bookInfo, category, backRoute },
+                state: { bookInfo, category, backRoute, cartBooks },
               })
             }
           >
@@ -92,6 +93,7 @@ export default function ShopCard({
                           books={bookInfo}
                           bookId={detail.id}
                           category={category}
+                          cartBooks={cartBooks}
                         />
                         <FavoriteButton
                           buttonVariant="favorite"
@@ -129,6 +131,7 @@ export default function ShopCard({
                     books={bookInfo}
                     bookId={detail.id}
                     category={category}
+                    cartBooks={cartBooks}
                   />
                   <FavoriteButton
                     buttonVariant="card"
